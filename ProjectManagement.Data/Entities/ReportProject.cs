@@ -8,8 +8,11 @@ namespace ProjectManagement.Data.Entities
 {
     public class ReportProject : BaseEntity
     {
-        public virtual Report ReportId {  get; set; }
+        public int ReportId {  get; set; }
+        public virtual Report Report {  get; set; }
 
-        public virtual Project ProjectId {  get; set; }
+        public int ProjectId { get; set; }
+
+        public virtual Project Project {  get; set; }
     }
 }

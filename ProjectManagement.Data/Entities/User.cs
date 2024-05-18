@@ -14,12 +14,16 @@ namespace ProjectManagement.Data.Entities
 
         public string Password { get; set; }
 
-        public virtual Project ProjectId { get; set; }
+        public int ProjectId { get; set; }
 
         public string FirstName {  get; set; }
 
         public string LastName { get; set; }
 
-        public virtual Role RoleId {  get; set; }
+        public int RoleId { get; set; }
+
+        public virtual Role Role { get; set; }
+
+        public virtual Project Project { get; set; }
     }
 }

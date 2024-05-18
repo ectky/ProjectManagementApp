@@ -16,9 +16,11 @@ namespace ProjectManagement.Data.Entities
         public Status Status { get; set; }
         public DateTime? Deadline {  get; set; }
         
-        public int AssignedUsers {  get; set; }
+        public virtual List<User> Users {  get; set; }
 
-        public virtual Project ProjectId {  get; set; }
+        public virtual Project Project {  get; set; }
+
+        public int ProjectId {  get; set; }
 
     }
 }
