@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProjectManagement.Data.Entities
 {
-    public class ReportProject
+    public class ReportProject : BaseEntity
     {
-        public int ReportId {  get; set; }
+        public Report ReportId {  get; set; }
 
-        public int ProjectId {  get; set; }
+        public Project ProjectId {  get; set; }
     }
 }

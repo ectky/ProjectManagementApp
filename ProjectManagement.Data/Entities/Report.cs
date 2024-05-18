@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProjectManagement.Data.Entities
 {
-    public class Report
+    public class Report: BaseEntity
     {
-        public int ReportId {  get; set; }
 
         public string Name {  get; set; }
 

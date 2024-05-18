@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace ProjectManagement.Data.Entities
 {
-    public class Role
+    public class Role : BaseEntity
     {
         public Role()
         {
-            this.Users = new List<User>();
+            this.Users = new List<BaseEntity>();
         }
         public string Name {  get; set; }
 
-        public virtual List<User> Users { get; set; }
+        public virtual List<BaseEntity> Users { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManagement.Data.Entities
 {
-    public class User
+    public class BaseEntity
     {
         public string Username { get; set; }
 

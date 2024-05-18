@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagement.Shared.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,15 +7,14 @@ using System.Threading.Tasks;
 
 namespace ProjectManagement.Data.Entities
 {
-    public class Task
+    public class Task : BaseEntity
     {
         public string Description { get; set; }
 
-        public string TaskName { get; set; }
+        public string Name { get; set; }
 
-        public enum Status {NotStarted, InProgress, Completed, OnHold, Cancelled}
-
-        public int Deadline {  get; set; }
+        public Status Status { get; set; }
+        public DateTime? Deadline {  get; set; }
         
         public int AssignedUsers {  get; set; }
 
