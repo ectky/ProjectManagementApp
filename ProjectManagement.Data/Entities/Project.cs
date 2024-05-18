@@ -21,9 +21,9 @@ namespace ProjectManagement.Data.Entities
 
         public int UserId {  get; set; }
 
-        public virtual User User { get; set; }
+        public virtual List<User> User { get; set; }
 
-        public virtual List<Task> Task { get; set; }
+        public virtual List<Task> Tasks { get; set; }
     }
     
 }

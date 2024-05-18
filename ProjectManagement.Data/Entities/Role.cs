@@ -10,10 +10,10 @@ namespace ProjectManagement.Data.Entities
     {
         public Role()
         {
-            this.Users = new List<BaseEntity>();
+            this.Users = new List<User>();
         }
         public string Name {  get; set; }
 
-        public virtual List<BaseEntity> Users { get; set; }
+        public virtual List<User> Users { get; set; }
     }
 }
