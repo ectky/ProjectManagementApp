@@ -19,8 +19,6 @@ namespace ProjectManagement.Data.Entities
 
         public bool IsCompleted { get; set; }
 
-        public int UserId {  get; set; }
-
         public virtual List<User> User { get; set; }
 
         public virtual List<Task> Tasks { get; set; }
