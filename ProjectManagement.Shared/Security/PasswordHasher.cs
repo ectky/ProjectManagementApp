@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using System.Security.Cryptography;
 
-namespace PetShelter.Shared.Security
+namespace ProjectManagement.Shared.Security
 {
     public static class PasswordHasher
     {

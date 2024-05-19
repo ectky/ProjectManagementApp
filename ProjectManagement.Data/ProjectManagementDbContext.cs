@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PetShelter.Shared.Security;
 using ProjectManagement.Data.Entities;
 using ProjectManagement.Shared;
 using System;
 using System.Linq;
+using ProjectManagement.Shared.Security;
 using Task = ProjectManagement.Data.Entities.Task;
 
 namespace ProjectManagement.Data
@@ -46,7 +46,7 @@ namespace ProjectManagement.Data
                 .OnDelete(DeleteBehavior.Restrict); // Change Cascade to Restrict
 
             modelBuilder.Entity<ReportProject>()
-                .HasKey(rp => new { rp.ReportId, rp.ProjectId });
+                .HasKey(rp => rp.Id);
 
             modelBuilder.Entity<ReportProject>()
                 .HasOne(rp => rp.Report)
@@ -96,14 +96,16 @@ namespace ProjectManagement.Data
 
             modelBuilder.Entity<User>().HasData(new User
             {
-                Id = 1,
-                Username = "manager",
-                RoleId = (int)UserRole.Manager,
-                FirstName = "Manager",
+                Id = 2,
+                Username = "admin",
+                RoleId = (int)UserRole.Admin,
+                FirstName = "Admin",
                 LastName = "User",
                 Password = PasswordHasher.HashPassword("string"),
-                Email = "manager@example.com"
+                Email = "admin@example.com"
             });
+
+
         }
     }
 }
