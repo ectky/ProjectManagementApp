@@ -8,8 +8,8 @@ namespace ProjectManagement.Shared
 {
     public enum UserRole
     {
-        User = 1,
-        Employee,
+        Employee = 1,
+        Admin,
         Manager
     }
 }
