@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProjectManagement.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialCrate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -84,13 +84,14 @@ namespace ProjectManagement.Data.Migrations
                 name: "ReportsProjects",
                 columns: table => new
                 {
-                    ReportId = table.Column<int>(type: "int", nullable: false),
-                    ProjectId = table.Column<int>(type: "int", nullable: false),
                     Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ReportId = table.Column<int>(type: "int", nullable: false),
+                    ProjectId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ReportsProjects", x => new { x.ReportId, x.ProjectId });
+                    table.PrimaryKey("PK_ReportsProjects", x => x.Id);
                     table.ForeignKey(
                         name: "FK_ReportsProjects_Projects_ProjectId",
                         column: x => x.ProjectId,
@@ -148,20 +149,25 @@ namespace ProjectManagement.Data.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, "User" },
-                    { 2, "Employee" },
+                    { 1, "Employee" },
+                    { 2, "Admin" },
                     { 3, "Manager" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "FirstName", "LastName", "Password", "ProjectId", "RoleId", "TaskId", "Username" },
-                values: new object[] { 1, "manager@example.com", "Manager", "User", "U/jN0UemqScnNa4fc2+Lli87A9RqeOlyOOKcI0IlJOmBtTFwLcAVnPM6qo5Bn2dB", null, 3, null, "manager" });
+                values: new object[] { 2, "admin@example.com", "Admin", "User", "evmp3wGhwVMrmoJrUg1IRKOq2593NdZ+WtKMkByItMSBUzLRXEJxnwn/YvAWoK5E", null, 2, null, "admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ReportsProjects_ProjectId",
                 table: "ReportsProjects",
                 column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ReportsProjects_ReportId",
+                table: "ReportsProjects",
+                column: "ReportId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tasks_ProjectId",

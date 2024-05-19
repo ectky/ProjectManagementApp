@@ -78,18 +78,23 @@ namespace ProjectManagement.Data.Migrations
 
             modelBuilder.Entity("ProjectManagement.Data.Entities.ReportProject", b =>
                 {
-                    b.Property<int>("ReportId")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Id")
+                    b.Property<int>("ReportId")
                         .HasColumnType("int");
 
-                    b.HasKey("ReportId", "ProjectId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ProjectId");
+
+                    b.HasIndex("ReportId");
 
                     b.ToTable("ReportsProjects");
                 });
@@ -114,12 +119,12 @@ namespace ProjectManagement.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Name = "User"
+                            Name = "Employee"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Employee"
+                            Name = "Admin"
                         },
                         new
                         {
@@ -210,13 +215,13 @@ namespace ProjectManagement.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            Email = "manager@example.com",
-                            FirstName = "Manager",
+                            Id = 2,
+                            Email = "admin@example.com",
+                            FirstName = "Admin",
                             LastName = "User",
-                            Password = "U/jN0UemqScnNa4fc2+Lli87A9RqeOlyOOKcI0IlJOmBtTFwLcAVnPM6qo5Bn2dB",
-                            RoleId = 3,
-                            Username = "manager"
+                            Password = "evmp3wGhwVMrmoJrUg1IRKOq2593NdZ+WtKMkByItMSBUzLRXEJxnwn/YvAWoK5E",
+                            RoleId = 2,
+                            Username = "admin"
                         });
                 });
 
