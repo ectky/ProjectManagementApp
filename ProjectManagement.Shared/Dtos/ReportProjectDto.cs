@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManagement.Shared.Dtos
 {
-    internal class ReportProjectDto : BaseModel
+    public class ReportProjectDto : BaseModel
     {
         public int ReportId { get; set; }
         public ReportDto Report { get; set; }
