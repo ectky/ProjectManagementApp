@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProjectManagement.Shared.Dtos
 {
-    public class UserDto
+    public class UserDto : BaseModel
     {
         public string Username { get; set; }
         public string Email { get; set; }

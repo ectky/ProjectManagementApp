@@ -1,4 +1,6 @@
-﻿using ProjectManagement.Data.Entities;
+﻿using AutoMapper;
+using ProjectManagement.Data.Entities;
+using ProjectManagement.Shared.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;

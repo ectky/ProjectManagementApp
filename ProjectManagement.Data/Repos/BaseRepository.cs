@@ -1,9 +1,15 @@
-﻿using ProjectManagement.Data.Entities;
+﻿using AutoMapper;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using ProjectManagement.Data.Entities;
+using ProjectManagement.Shared.Dtos;
+using ProjectManagement.Shared.Repos.Contacts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Task = System.Threading.Tasks.Task;
 
 namespace ProjectManagement.Data.Repos
 {
@@ -11,12 +17,12 @@ namespace ProjectManagement.Data.Repos
         where T : BaseEntity
         where TModel : BaseModel
     {
-        protected readonly PetShelterDbContext _context;
+        protected readonly ProjectManagementDbContext _context;
         protected readonly DbSet<T> _dbSet;
         protected readonly IMapper mapper;
         private bool disposedValue;
 
-        protected BaseRepository(PetShelterDbContext context, IMapper maper)
+        protected BaseRepository(ProjectManagementDbContext context, IMapper maper)
         {
             _context = context;
             _dbSet = _context.Set<T>();
