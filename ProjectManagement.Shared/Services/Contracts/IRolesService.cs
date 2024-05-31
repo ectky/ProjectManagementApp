@@ -1,13 +1,14 @@
 ﻿using ProjectManagement.Shared.Dtos;
+using ProjectManagement.Shared.Repos.Contacts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProjectManagement.Shared.Repos.Contacts
+namespace ProjectManagement.Shared.Services.Contracts
 {
-    public interface IRoleRepository : IBaseRepository<RoleDto>
+    public interface IRolesService : IBaseCrudService<RoleDto, IRoleRepository>
     {
         public Task<RoleDto> GetByNameIfExistsAsync(string name);
 
