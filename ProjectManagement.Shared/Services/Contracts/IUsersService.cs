@@ -11,7 +11,7 @@ namespace ProjectManagement.Shared.Services.Contracts
     public interface IUsersService : IBaseCrudService<UserDto, IUserRepository>
     {
 
-        public Task<UserDto> GetByUsernameAsync(string username);
-        public Task<bool> CanUserLoginAsync(string username, string password);
+        //public Task<UserDto> GetByUsernameAsync(string username);
+        //public Task<bool> CanUserLoginAsync(string username, string password);
     }
 }

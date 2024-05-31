@@ -10,7 +10,7 @@ namespace ProjectManagement.Shared.Services.Contracts
 {
     public interface IRolesService : IBaseCrudService<RoleDto, IRoleRepository>
     {
-        public Task<RoleDto> GetByNameIfExistsAsync(string name);
+        //public Task<RoleDto> GetByNameIfExistsAsync(string name);
 
     }
 }

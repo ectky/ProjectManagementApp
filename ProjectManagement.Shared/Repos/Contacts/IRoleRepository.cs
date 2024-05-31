@@ -9,7 +9,7 @@ namespace ProjectManagement.Shared.Repos.Contacts
 {
     public interface IRoleRepository : IBaseRepository<RoleDto>
     {
-        public Task<RoleDto> GetByNameIfExistsAsync(string name);
+        //public Task<RoleDto> GetByNameIfExistsAsync(string name);
 
     }
 }
