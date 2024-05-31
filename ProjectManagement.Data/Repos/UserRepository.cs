@@ -15,5 +15,6 @@ namespace ProjectManagement.Data.Repos
         public UserRepository(ProjectManagementDbContext context, IMapper mapper) : base(context, mapper)
         {
         }
+
     }
 }
