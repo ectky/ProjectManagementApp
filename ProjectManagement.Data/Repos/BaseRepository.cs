@@ -57,6 +57,15 @@ namespace ProjectManagement.Data.Repos
 
             return this.MapToModel(user);
         }
+        public async Task<TModel> GetByIdAsync(int id)
+        {
+            var user = await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+            return this.MapToModel(user);
+        }
 
         public async Task CreateAsync(TModel model)
         {
@@ -151,7 +160,7 @@ namespace ProjectManagement.Data.Repos
             return _dbSet.AnyAsync(e => e.Id == id);
         }
 
-        public async Task<IEnumerable<TModel>> GetWithPaginatioAsync(int pageSize, int pageNumber)
+        public async Task<IEnumerable<TModel>> GetWithPaginationAsync(int pageSize, int pageNumber)
         {
             var paginatedRecords = await _dbSet
                 .Skip((pageNumber - 1) * pageSize)

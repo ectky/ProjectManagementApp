@@ -11,12 +11,12 @@ namespace ProjectManagement.Shared.Repos.Contacts
         where TModel : BaseModel
     {
         Task<IEnumerable<TModel>> GetAllAsync();
-        Task<TModel> GetByIdIfExistsAsync(int id);
+        Task<TModel> GetByIdAsync(int id);
         Task CreateAsync(TModel model);
         Task UpdateAsync(TModel model);
         Task SaveAsync(TModel model);
         Task DeleteAsync(int id);
         Task<bool> ExistsByIdAsync(int id);
-        Task<IEnumerable<TModel>> GetWithPaginatioAsync(int pageSize, int pageNumber);
+        Task<IEnumerable<TModel>> GetWithPaginationAsync(int pageSize, int pageNumber);
     }
 }
