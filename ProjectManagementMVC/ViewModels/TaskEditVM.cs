@@ -10,7 +10,6 @@ namespace ProjectManagementMVC.ViewModels
         public Status Status { get; set; }
         public DateTime? Deadline { get; set; }
         public int ProjectId { get; set; }
-        public List<int> UserIds { get; set; }
 
         public IEnumerable<SelectListItem> Projects { get; set; }
         public IEnumerable<SelectListItem> Users { get; set; }
