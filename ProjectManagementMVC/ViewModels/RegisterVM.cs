@@ -20,10 +20,6 @@ namespace ProjectManagementMVC.ViewModels
 
         [Required(ErrorMessage = "First name is required")]
         public string FirstName { get; set; }
-
-        [Required(ErrorMessage = "Role is required")]
-        public int RoleId { get; set; }
-
-        public int? ProjectId { get; set; }
+ 
     }
 }
