@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ProjectManagament.Services
 {
-    public class ReportsService : BaseCrudService<ReportDto, IReportRepository>, IReportsService
+    public class ReportProjectsService : BaseCrudService<ReportProjectDto, IReportProjectRepository>, IReportProjectsService
     {
-        public ReportsService(IReportRepository repository) : base(repository)
+        public ReportProjectsService(IReportProjectRepository repository) : base(repository)
         {
 
         }
