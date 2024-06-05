@@ -28,12 +28,7 @@ namespace ProjectManagement.Data.Repos
             var role = await _context.Roles
                 .FirstOrDefaultAsync(r => r.Name.Equals(roleName, StringComparison.OrdinalIgnoreCase));
 
-            if (role != null)
-            {
-                return mapper.Map<RoleDto>(role);
-            }
-
-            return null;
+            return mapper.Map<RoleDto>(role);
         }
     }
 }
