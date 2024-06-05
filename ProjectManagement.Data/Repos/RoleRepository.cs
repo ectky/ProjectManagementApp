@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using ProjectManagement.Shared;
 using ProjectManagement.Shared.Attributes;
 using Task = System.Threading.Tasks.Task;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectManagement.Data.Repos
 {
@@ -24,12 +25,15 @@ namespace ProjectManagement.Data.Repos
 
         public async Task<RoleDto> GetByNameIfExistsAsync(string roleName)
         {
-            var roles = Enum.GetValues(typeof(UserRole))
-                .Cast<UserRole>()
-                .Select(r => new RoleDto { Id = (int)r, Name = r.ToString() })
-                .ToList();
+            var role = await _context.Roles
+                .FirstOrDefaultAsync(r => r.Name.Equals(roleName, StringComparison.OrdinalIgnoreCase));
 
-            return await Task.FromResult(roles.FirstOrDefault(r => r.Name.Equals(roleName, StringComparison.OrdinalIgnoreCase)));
+            if (role != null)
+            {
+                return mapper.Map<RoleDto>(role);
+            }
+
+            return null;
         }
     }
 }

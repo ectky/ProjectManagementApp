@@ -18,9 +18,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddAutoMapper(m => m.AddProfile(new AutoMapperConfiguration()));
-builder.Services.AddAutoMapper(m => m.AddProfile(new AutoMapperConfiguration()));
-builder.Services.AddScoped<IUsersService, UsersService>();
-builder.Services.AddScoped<IRolesService, RolesService>();
 builder.Services.AutoBind(typeof(ProjectsService).Assembly);
 builder.Services.AutoBind(typeof(ProjectRepository).Assembly);
 

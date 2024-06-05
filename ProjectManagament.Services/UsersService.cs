@@ -23,7 +23,7 @@ namespace ProjectManagement.Services
 
         public async Task<bool> CanUserLoginAsync(string username, string password)
         {
-            var user = await _repository.GetUserByUsernameAsync(username);
+            var user = await _repository.GetByUsernameAsync(username);
 
             if (user == null)
             {
@@ -33,11 +33,6 @@ namespace ProjectManagement.Services
             bool passwordMatches = PasswordHasher.VerifyPassword(password, user.Password);
 
             return passwordMatches;
-        }
-
-        public async Task<UserDto> GetUserByUsernameAsync(string username)
-        {
-            return await userRepository.GetUserByUsernameAsync(username);
         }
 
         public async Task<UserDto> GetByUsernameAsync(string username)

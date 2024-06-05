@@ -10,6 +10,5 @@ namespace ProjectManagement.Shared.Repos.Contacts
     public interface IUserRepository : IBaseRepository<UserDto>
     {
         public Task<UserDto> GetByUsernameAsync(string username);
-        Task<UserDto> GetUserByUsernameAsync(string username);
     }
 }

@@ -25,10 +25,5 @@ namespace ProjectManagement.Data.Repos
             return MapToModel(await _dbSet.FirstOrDefaultAsync(u => u.Username == username));
         }
 
-        public async Task<UserDto> GetUserByUsernameAsync(string username)
-        {
-            return MapToModel(await _dbSet.FirstOrDefaultAsync(u => u.Username == username));
-        }
-
     }
 }
