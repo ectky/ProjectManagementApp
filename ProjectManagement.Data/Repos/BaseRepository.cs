@@ -22,7 +22,7 @@ namespace ProjectManagement.Data.Repos
         protected readonly IMapper mapper;
         private bool disposedValue;
 
-        protected BaseRepository(ProjectManagementDbContext context, IMapper maper)
+        protected BaseRepository(ProjectManagementDbContext context, IMapper mapper)
         {
             _context = context;
             _dbSet = _context.Set<T>();

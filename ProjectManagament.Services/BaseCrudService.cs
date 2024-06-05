@@ -2,7 +2,7 @@
 using ProjectManagement.Shared.Repos.Contacts;
 using ProjectManagement.Shared.Services.Contracts;
 
-namespace ProjectManagament.Services
+namespace ProjectManagement.Services
 {
     public abstract class BaseCrudService<TModel, TRepository> : IBaseCrudService<TModel, TRepository>
         where TModel : BaseModel

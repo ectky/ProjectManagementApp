@@ -7,9 +7,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectManagement.Shared.Attributes;
 
 namespace ProjectManagement.Data.Repos
 {
+    [AutoBind]
     public class ProjectRepository : BaseRepository<Project, ProjectDto>, IProjectRepository
     {
         public ProjectRepository(ProjectManagementDbContext context, IMapper mapper) : base(context, mapper)

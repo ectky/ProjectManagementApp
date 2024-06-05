@@ -6,9 +6,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectManagement.Shared.Attributes;
 
-namespace ProjectManagament.Services
+namespace ProjectManagement.Services
 {
+    [AutoBind]
     public class ProjectsService : BaseCrudService<ProjectDto, IProjectRepository>, IProjectsService
     {
         public ProjectsService(IProjectRepository repository) : base(repository)

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using ProjectManagement.Shared
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -25,7 +28,26 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        
+
                     </ul>
+                    
+                    <!-- Login and Register links -->
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+                        <div style="margin-right: 30px;">
+                            <a asp-controller="Auth" asp-action="ConfirmLogout" class="nav-link">Logout</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div style="margin-right: 10px;">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+                        </div>
+                        <div style="margin-right: 30px;">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
+                        </div>
+                    }
                 </div>
             </div>
         </nav>
