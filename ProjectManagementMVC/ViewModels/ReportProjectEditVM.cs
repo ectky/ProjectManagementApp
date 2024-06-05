@@ -7,5 +7,7 @@ namespace ProjectManagementMVC.ViewModels
         public int ReportId { get; set; }
         public int ProjectId { get; set; }
 
+        public IEnumerable<SelectListItem> Reports { get; set; }
+
     }
 }
