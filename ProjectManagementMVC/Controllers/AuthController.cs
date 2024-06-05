@@ -85,7 +85,15 @@ namespace ProjectManagementMVC.Controllers
             userCreateModel.Password = hashedPassword;
 
             var userDto = this.mapper.Map<UserDto>(userCreateModel);
-            userDto.RoleId = (await rolesService.GetByNameIfExistsAsync(UserRole.User.ToString()))?.Id;
+            var roleId = (await rolesService.GetByNameIfExistsAsync(UserRole.Employee.ToString()))?.Id;
+            if (roleId != null) 
+            {
+                userDto.RoleId = roleId.Value;
+            }
+            else
+            {
+                return BadRequest(Constants.RoleDoesNotExists);
+            }
             await this.userService.SaveAsync(userDto);
 
             await LoginUser(userDto.Username);
