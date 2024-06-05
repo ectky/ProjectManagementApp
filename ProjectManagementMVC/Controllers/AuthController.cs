@@ -1,21 +1,31 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using ProjectManagament.Services;
+using ProjectManagement.Shared;
+using ProjectManagement.Shared.Dtos;
+using ProjectManagement.Shared.Security;
+using ProjectManagement.Shared.Services.Contracts;
 using ProjectManagementMVC.ViewModels;
+using System.Security.Claims;
 
 namespace ProjectManagementMVC.Controllers
 {
     public class AuthController : Controller
     {
-        private readonly IUserService userService;
-        private readonly IRoleService roleService;
+        private readonly IUsersService userService;
+        private readonly IRolesService rolesService;
         private readonly IMapper mapper;
 
         public AuthController(
-            IUserService usersService,
-            IRoleService roleService,
+            IUsersService usersService,
+            IRolesService rolesService,
             IMapper mapper)
         {
             this.userService = usersService;
-            this.roleService = roleService;
+            this.rolesService = rolesService;
             this.mapper = mapper;
         }
         [HttpGet]
@@ -45,7 +55,7 @@ namespace ProjectManagementMVC.Controllers
             var claims = new[]
             {
                 new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Role, RoleController.Name),
+                new Claim(ClaimTypes.Role, user.Role.Name),
             };
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             var principal = new ClaimsPrincipal(identity);
@@ -75,8 +85,8 @@ namespace ProjectManagementMVC.Controllers
             userCreateModel.Password = hashedPassword;
 
             var userDto = this.mapper.Map<UserDto>(userCreateModel);
-            userDto.RoleId = (await roleService.GetByNameIfExistsAsync(UserRole.User.ToString()))?.Id;
-            await this.usersService.SaveAsync(userDto);
+            userDto.RoleId = (await rolesService.GetByNameIfExistsAsync(UserRole.User.ToString()))?.Id;
+            await this.userService.SaveAsync(userDto);
 
             await LoginUser(userDto.Username);
 

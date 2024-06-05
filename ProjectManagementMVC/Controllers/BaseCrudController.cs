@@ -1,4 +1,9 @@
-﻿using ProjectManagementMVC.ViewModels;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using ProjectManagement.Shared.Dtos;
+using ProjectManagement.Shared.Repos.Contacts;
+using ProjectManagement.Shared.Services.Contracts;
+using ProjectManagementMVC.ViewModels;
 
 namespace ProjectManagementMVC.Controllers
 {
