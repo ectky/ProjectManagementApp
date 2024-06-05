@@ -1,0 +1,15 @@
+﻿@model ProjectManagementMVC.ViewModels.LogoutVM
+
+<h2>Logout</h2>
+
+@{
+    // Check if user is authenticated
+    if (User.Identity.IsAuthenticated)
+    {
+        <p>Are you sure you want to log out?</p>
+        <form asp-action="Logout" asp-controller="Auth" method="get">
+            <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
+    }
+
+}
