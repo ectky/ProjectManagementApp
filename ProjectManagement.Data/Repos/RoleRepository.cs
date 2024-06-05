@@ -4,16 +4,32 @@ using ProjectManagement.Shared.Dtos;
 using ProjectManagement.Shared.Repos.Contacts;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectManagement.Shared;
+using ProjectManagement.Shared.Attributes;
+using Task = System.Threading.Tasks.Task;
 
 namespace ProjectManagement.Data.Repos
 {
+    [AutoBind]
     public class RoleRepository : BaseRepository<Role, RoleDto>, IRoleRepository
     {
         public RoleRepository(ProjectManagementDbContext context, IMapper mapper) : base(context, mapper)
         {
+
+        }
+
+        public async Task<RoleDto> GetByNameIfExistsAsync(string roleName)
+        {
+            var roles = Enum.GetValues(typeof(UserRole))
+                .Cast<UserRole>()
+                .Select(r => new RoleDto { Id = (int)r, Name = r.ToString() })
+                .ToList();
+
+            return await Task.FromResult(roles.FirstOrDefault(r => r.Name.Equals(roleName, StringComparison.OrdinalIgnoreCase)));
         }
     }
 }

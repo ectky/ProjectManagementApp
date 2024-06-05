@@ -6,14 +6,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectManagement.Shared.Attributes;
 
-namespace ProjectManagament.Services
+namespace ProjectManagement.Services
 {
+    [AutoBind]
     public class RolesService : BaseCrudService<RoleDto, IRoleRepository>, IRolesService
     {
-        public RolesService(IRoleRepository repository) : base(repository)
-        {
+        private readonly IRoleRepository roleRepository;
 
+        public RolesService(IRoleRepository roleRepository) : base(roleRepository)
+        {
+            this.roleRepository = roleRepository;
+        }
+
+        public async Task<IEnumerable<RoleDto>> GetAllActiveAsync()
+        {
+            var allRoles = await roleRepository.GetAllAsync();
+            return allRoles;
+        }
+
+        public Task<RoleDto> GetByNameIfExistsAsync(string roleName)
+        {
+            return roleRepository.GetByNameIfExistsAsync(roleName);
         }
     }
 }

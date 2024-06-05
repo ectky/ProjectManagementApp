@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectManagement.Shared.Attributes;
 
-namespace ProjectManagament.Services
+namespace ProjectManagement.Services
 {
     public class ReportProjectsService : BaseCrudService<ReportProjectDto, IReportProjectRepository>, IReportProjectsService
     {
+        [AutoBind]
         public ReportProjectsService(IReportProjectRepository repository) : base(repository)
         {
 
