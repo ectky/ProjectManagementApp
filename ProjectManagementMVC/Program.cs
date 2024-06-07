@@ -45,6 +45,12 @@ if (!app.Environment.IsDevelopment())
 }
 
 
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ProjectManagementDbContext>();
+    // Automatically update database
+    context.Database.Migrate();
+}
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
