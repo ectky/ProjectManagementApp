@@ -2,29 +2,31 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>Report Projects</h2>
+<h2>Report projects</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ReportId)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.ProjectId)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReportId)
+        </th>
+
         <th>Actions</th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
             <td>
-                @Html.DisplayNameFor(model => model.ReportId)
+                @Html.DisplayFor(modelItem => item.ProjectId)
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.ProjectId)
+                @Html.DisplayFor(modelItem => item.ReportId)
             </td>
+
             <td>
                 @if (User.IsInRole("Admin"))
                 {
@@ -32,7 +34,9 @@
                 }
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+
             </td>
         </tr>
     }
 </table>
+

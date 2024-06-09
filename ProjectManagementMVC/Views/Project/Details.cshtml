@@ -31,6 +31,15 @@
         <dt>
             @Html.DisplayFor(model => model.Description)
         </dt>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tasks)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tasks)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.EndDate)
         </dt>
@@ -43,10 +52,10 @@
         <dt>
             @Html.DisplayFor(model => model.IsCompleted)
         </dt>
-
+@* 
         <dd>
             @Html.ActionLink("Location Details", "Details", "Location", new { id = Model.Id })
-        </dd>
+        </dd> *@
 
     </dl>
 </div>

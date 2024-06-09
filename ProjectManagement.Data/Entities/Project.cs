@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjectManagement.Shared.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,8 +15,10 @@ namespace ProjectManagement.Data.Entities
         public DateTime? EndDate { get; set; }
         public bool IsCompleted { get; set; }
 
+
         public virtual ICollection<User> Users { get; set; } = new List<User>();
         public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
+        public Status Status { get; internal set; }
     }
     
 }

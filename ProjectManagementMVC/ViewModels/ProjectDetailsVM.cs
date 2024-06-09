@@ -9,5 +9,6 @@
         public bool IsCompleted { get; set; }
         public List<UserDetailsVM> Users { get; set; }
         public List<TaskDetailsVM> Tasks { get; set; }
+
     }
 }

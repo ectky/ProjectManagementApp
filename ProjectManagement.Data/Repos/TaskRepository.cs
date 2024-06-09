@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectManagement.Shared.Attributes;
 using Task = ProjectManagement.Data.Entities.Task;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectManagement.Data.Repos
 {
@@ -17,6 +18,10 @@ namespace ProjectManagement.Data.Repos
     {
         public TaskRepository(ProjectManagementDbContext context, IMapper mapper) : base(context, mapper)
         {
+        }
+        public async Task<IEnumerable<TaskDto>> GetAllActiveAsync()
+        {
+            return MapToEnumerableOfModel(await _dbSet.Where(s => s.Status == null).ToListAsync());
         }
     }
 }

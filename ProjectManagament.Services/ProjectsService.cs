@@ -13,13 +13,24 @@ namespace ProjectManagement.Services
     [AutoBind]
     public class ProjectsService : BaseCrudService<ProjectDto, IProjectRepository>, IProjectsService
     {
-        public ProjectsService(IProjectRepository repository) : base(repository)
+        public IUsersService _userService { get; set; }
+
+        public ProjectsService(IProjectRepository repository, IUsersService userService) : base(repository)
         {
-
+            this._userService = userService;
         }
-        //public Task<ProjectDto> CreateAsync(ProjectDto project) 
-        //{
-
-        //}
+        public Task<IEnumerable<ProjectDto>> GetAllActiveAsync()
+        {
+            return _repository.GetAllActiveAsync();
+        }
+        public async Task CompleteProjectAsync(int projectId )
+        {
+            
+            if (!await ExistsByIdAsync(projectId))
+            {
+                throw new ArgumentException($"Project with ID {projectId} does not exist.");
+            }
+            await _repository.CompleteProjectAsync(projectId);
+        }
     }
 }

@@ -18,6 +18,8 @@ namespace ProjectManagement.Shared.Dtos
         public string Description { get; set; }
         public DateTime? EndDate { get; set; }
         public bool IsCompleted { get; set; }
+
+
         public ICollection<UserDto> Users { get; set; } = new List<UserDto>();
         public ICollection<TaskDto> Tasks { get; set; } = new List<TaskDto>();
     }

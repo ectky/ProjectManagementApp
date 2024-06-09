@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Index";
 }
-<h2>Project</h2>
+<h2>Projects</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -47,10 +47,17 @@
             <td>
                 @if (User.IsInRole("Admin"))
                 {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id } )
                 }
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) 
+                @if (item.IsCompleted) 
+                {
+                    <span class="text-success">Проектът е завършен</span>
+                }
+                else{
+                @Html.ActionLink("Complete project", "CompleteProject", new { id = item.Id })
+                }
             </td>
         </tr>
     }

@@ -11,5 +11,8 @@ namespace ProjectManagement.Shared.Services.Contracts
 {
     public interface IProjectsService : IBaseCrudService<ProjectDto, IProjectRepository>
     {
+        public Task<IEnumerable<ProjectDto>> GetAllActiveAsync();
+
+        public Task CompleteProjectAsync(int projectId);
     }
 }

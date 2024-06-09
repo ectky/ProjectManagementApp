@@ -12,6 +12,9 @@ namespace ProjectManagementMVC.ViewModels
         public int ProjectId { get; set; }
 
         public IEnumerable<SelectListItem> Projects { get; set; }
-      
+
+        public IEnumerable<SelectListItem> StatusList { get; set; }
+
+
     }
 }

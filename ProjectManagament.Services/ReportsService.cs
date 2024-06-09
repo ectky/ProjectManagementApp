@@ -10,9 +10,10 @@ using ProjectManagement.Shared.Attributes;
 
 namespace ProjectManagement.Services
 {
+    [AutoBind]
+
     public class ReportsService : BaseCrudService<ReportDto, IReportRepository>, IReportsService
     {
-        [AutoBind]
         public ReportsService(IReportRepository repository) : base(repository)
         {
 
