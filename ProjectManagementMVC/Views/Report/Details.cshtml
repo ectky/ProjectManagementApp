@@ -22,11 +22,52 @@
         <dt>
             @Html.DisplayFor(model => model.Description)
         </dt>
-@* 
+        @*
         <dd>
-            @Html.ActionLink("Location Details", "Details", "Location", new { id = Model.Id })
+        @Html.ActionLink("Location Details", "Details", "Location", new { id = Model.Id })
         </dd> *@
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @if (Model.ReportProjects != null && Model.ReportProjects.Any())
+            {
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Project</th>
+                            <th>Tasks</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var reportProject in Model.ReportProjects)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(modelItem => reportProject.Project.Name)</td>
+                                <td>
+                                    @foreach (var task in reportProject.Project.Tasks)
+                                    {
+                                        <div>@Html.DisplayFor(modelItem => task.Name)</div>
+                                    }
+                                </td>
+                                <td>
+                                    @foreach (var task in reportProject.Project.Tasks)
+                                    {
+                                        <div>@Html.DisplayFor(modelItem => task.Status)</div>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <p>Проектът няма зададена задача.</p>
+            }
+        </dd>
     </dl>
 </div>
 <p>

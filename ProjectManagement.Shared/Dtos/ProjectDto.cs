@@ -12,6 +12,7 @@ namespace ProjectManagement.Shared.Dtos
         {
             this.Users = new List<UserDto>();
             this.Tasks = new List<TaskDto>();
+            this.ReportProjects = new List<ReportProjectDto>();
         }
         public string Name { get; set; }
         public DateTime? StartDate { get; set; }
@@ -22,5 +23,7 @@ namespace ProjectManagement.Shared.Dtos
 
         public ICollection<UserDto> Users { get; set; } = new List<UserDto>();
         public ICollection<TaskDto> Tasks { get; set; } = new List<TaskDto>();
+
+        public virtual List<ReportProjectDto> ReportProjects { get; set; }
     }
 }

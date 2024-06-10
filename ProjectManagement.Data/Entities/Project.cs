@@ -9,6 +9,10 @@ namespace ProjectManagement.Data.Entities
 {
     public class Project:BaseEntity
     {
+        public Project()
+        {
+            this.ReportProjects = new List<ReportProject>();
+        }
         public string Name { get; set; }
         public DateTime? StartDate { get; set; }
         public string Description { get; set; }
@@ -18,7 +22,8 @@ namespace ProjectManagement.Data.Entities
 
         public virtual ICollection<User> Users { get; set; } = new List<User>();
         public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
-        public Status Status { get; internal set; }
+
+        public virtual List<ReportProject> ReportProjects { get; set; }
     }
     
 }

@@ -8,8 +8,14 @@ namespace ProjectManagement.Shared.Dtos
 {
     public class ReportDto : BaseModel
     {
+        public ReportDto() 
+        {
+            this.ReportProjects = new List<ReportProjectDto>();
+        }
         public string Name { get; set; }
 
         public string Description { get; set; }
+
+        public virtual List<ReportProjectDto> ReportProjects { get; set; }
     }
 }
