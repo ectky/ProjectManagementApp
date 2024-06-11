@@ -32,5 +32,14 @@ namespace ProjectManagement.Services
             }
             await _repository.CompleteProjectAsync(projectId);
         }
+
+        //public async Task<IEnumerable<ProjectDto>> GetAllActiveAsync()
+        //{
+        //    return MapToEnumerableOfModel(await _dbSet.Where(l => l.ShelterId == null && !l.IsEuthanized && !l.IsAdopted).ToListAsync());
+        //}
+        public async Task FilterProjectAsync(bool? isCompleted, DateTime? endDate)
+        {
+            return _repository.GetAllActiveAsync().Where(p => p.IsCompleted == isCompleted.Value).ToListAsync();
+        }
     }
 }

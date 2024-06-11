@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.IdentityModel.Tokens;
 using ProjectManagement.Shared;
 using ProjectManagement.Shared.Dtos;
+using ProjectManagement.Shared.Enums;
 using ProjectManagement.Shared.Repos.Contacts;
 using ProjectManagement.Shared.Services.Contracts;
 using ProjectManagementMVC.ViewModels;
@@ -20,7 +22,7 @@ namespace ProjectManagementMVC.Controllers
         {
 
         }
-       
+
         protected virtual async Task<CompleteProjectEditVM> PrePopulateVMAsync(CompleteProjectEditVM editVM)
         {
 
@@ -39,9 +41,16 @@ namespace ProjectManagementMVC.Controllers
         public async Task<IActionResult> CompleteProjectAsync(CompleteProjectEditVM editVM)
         {
             string loggedUsername = User.FindFirst(ClaimTypes.Name)?.Value;
-            
+
             await this._service.CompleteProjectAsync(editVM.ProjectId);
             return await List();
         }
+
+        [HttpGet]
+        public async Task<IActionResult> FilterProjectAsync()
+        {
+            var editVM = await _service.FilterProjectAsync()
+        }
+
     }
 }
