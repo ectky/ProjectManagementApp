@@ -19,10 +19,7 @@ namespace ProjectManagement.Services
         {
             this._userService = userService;
         }
-        public Task<IEnumerable<ProjectDto>> GetAllActiveAsync()
-        {
-            return _repository.GetAllActiveAsync();
-        }
+       
         public async Task CompleteProjectAsync(int projectId )
         {
             
@@ -33,13 +30,23 @@ namespace ProjectManagement.Services
             await _repository.CompleteProjectAsync(projectId);
         }
 
-        //public async Task<IEnumerable<ProjectDto>> GetAllActiveAsync()
-        //{
-        //    return MapToEnumerableOfModel(await _dbSet.Where(l => l.ShelterId == null && !l.IsEuthanized && !l.IsAdopted).ToListAsync());
-        //}
-        public async Task FilterProjectAsync(bool? isCompleted, DateTime? endDate)
+       
+        public async System.Threading.Tasks.Task FilterProjectAsync(bool? isCompleted, DateTime? endDate, ProjectDto project)
         {
-            return _repository.GetAllActiveAsync().Where(p => p.IsCompleted == isCompleted.Value).ToListAsync();
+            var filteredProjects = await GetAllAsync();
+
+            if (isCompleted.HasValue)
+            {
+                filteredProjects.Where(p => p.IsCompleted == isCompleted.Value).ToList();
+            }
+            if (endDate.HasValue)
+            {
+                filteredProjects.Where(p => p.EndDate <= endDate.Value);
+            }
+        }
+        public Task<IEnumerable<ProjectDto>> GetAllActiveAsync()
+        {
+            return _repository.GetAllActiveAsync();
         }
     }
 }

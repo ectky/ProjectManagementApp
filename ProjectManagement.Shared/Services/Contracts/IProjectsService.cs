@@ -14,5 +14,7 @@ namespace ProjectManagement.Shared.Services.Contracts
         public Task<IEnumerable<ProjectDto>> GetAllActiveAsync();
 
         public Task CompleteProjectAsync(int projectId);
+
+        public Task FilterProjectAsync(bool? isCompleted, DateTime? endDate, ProjectDto project);
     }
 }

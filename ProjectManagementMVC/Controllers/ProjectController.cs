@@ -40,7 +40,7 @@ namespace ProjectManagementMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> CompleteProjectAsync(CompleteProjectEditVM editVM)
         {
-            string loggedUsername = User.FindFirst(ClaimTypes.Name)?.Value;
+            string? loggedUsername = User.FindFirst(ClaimTypes.Name)?.Value;
 
             await this._service.CompleteProjectAsync(editVM.ProjectId);
             return await List();
@@ -49,7 +49,23 @@ namespace ProjectManagementMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> FilterProjectAsync()
         {
-            var editVM = await _service.FilterProjectAsync()
+            var editVM = await PrePopulateVMAsync(new ProjectEditVM());
+            return View(editVM);
+        }
+        [HttpPost]
+        public async Task<IActionResult> FilterProjectAsync(ProjectEditVM editVM)
+        {
+            string loggedUsername = User.FindFirst(ClaimTypes.Name)?.Value;
+            var user = await this._usersService.GetByUsernameAsync(loggedUsername);
+
+            var projectDto = new ProjectDto
+            {
+                IsCompleted = editVM.IsCompleted,
+                EndDate = editVM.EndDate
+
+            };
+            await this._service.FilterProjectAsync(editVM.IsCompleted, editVM.EndDate, projectDto);
+            return await List();
         }
 
     }
