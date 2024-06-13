@@ -19,9 +19,6 @@ namespace ProjectManagement.Data.Repos
         public TaskRepository(ProjectManagementDbContext context, IMapper mapper) : base(context, mapper)
         {
         }
-        public async Task<IEnumerable<TaskDto>> GetAllActiveAsync()
-        {
-            return MapToEnumerableOfModel(await _dbSet.Where(s => s.Status == null).ToListAsync());
-        }
+        
     }
 }

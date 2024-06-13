@@ -9,6 +9,5 @@ namespace ProjectManagement.Shared.Repos.Contacts
 {
     public interface ITaskRepository : IBaseRepository<TaskDto>
     {
-        public Task<IEnumerable<TaskDto>> GetAllActiveAsync();
     }
 }

@@ -1,4 +1,5 @@
-﻿using ProjectManagement.Shared.Enums;
+﻿using ProjectManagement.Data.Entities;
+using ProjectManagement.Shared.Enums;
 
 namespace ProjectManagementMVC.ViewModels
 {
@@ -7,11 +8,14 @@ namespace ProjectManagementMVC.ViewModels
         public string Name { get; set; }
         public string Description { get; set; }
         public Status Status { get; set; }
+
         public DateTime? Deadline { get; set; }
         public int ProjectId { get; set; }
 
         public ProjectDetailsVM Project { get; set; }
-        public List<UserDetailsVM> Users { get; set; }
+        public int UserId { get; set; }
+
+        public UserDetailsVM User { get; set; }
 
     }
 }

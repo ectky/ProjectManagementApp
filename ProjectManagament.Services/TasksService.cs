@@ -18,9 +18,6 @@ namespace ProjectManagement.Services
         {
             
         }
-        public Task<IEnumerable<TaskDto>> GetAllActiveAsync()
-        {
-            return _repository.GetAllActiveAsync();
-        }
+       
     }
 }

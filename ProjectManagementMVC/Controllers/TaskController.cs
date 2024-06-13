@@ -20,19 +20,21 @@ namespace ProjectManagementMVC.Controllers
     public class TaskController : BaseCrudController<TaskDto, ITaskRepository, ITasksService, TaskEditVM, TaskDetailsVM>
     {
         public IProjectsService _projectsService { get; set; }
-        public ITaskRepository _taskRepository { get; set; }
-        public TaskController(ITasksService service, IProjectsService _projectsService, ITaskRepository _taskRepository, IMapper mapper) : base(service, mapper)
+        public IUsersService _userService { get; set; }
+        public TaskController(ITasksService service, IProjectsService _projectsService, IUsersService _userService, IMapper mapper) : base(service, mapper)
         {
             this._projectsService = _projectsService;
-            this._taskRepository = _taskRepository;
+            this._userService = _userService;
         }
-        protected override Task<TaskEditVM> PrePopulateVMAsync(TaskEditVM editVM)
+
+        protected override async Task<TaskEditVM> PrePopulateVMAsync(TaskEditVM editVM)
         {
             editVM.StatusList = Enum.GetValues(typeof(Status)).Cast<Status>().Select(s => new SelectListItem(s.ToString(), ((int)s).ToString()));
-
-
-            return System.Threading.Tasks.Task.FromResult(editVM);
+            editVM.ProjectList = (await _projectsService.GetAllActiveAsync()).Select(x => new SelectListItem($"{x.Name}", x.Id.ToString()));
+            editVM.UserList = (await _userService.GetAllAsync()).Select(x => new SelectListItem($"{x.FirstName} {x.LastName}", x.Id.ToString()));
+            return editVM;
         }
 
+        
     }
 }

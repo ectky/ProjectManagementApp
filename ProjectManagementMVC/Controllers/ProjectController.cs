@@ -40,7 +40,6 @@ namespace ProjectManagementMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> CompleteProjectAsync(CompleteProjectEditVM editVM)
         {
-            string? loggedUsername = User.FindFirst(ClaimTypes.Name)?.Value;
 
             await this._service.CompleteProjectAsync(editVM.ProjectId);
             return await List();

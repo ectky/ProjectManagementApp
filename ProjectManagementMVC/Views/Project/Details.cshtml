@@ -35,9 +35,26 @@
         <dt>
             @Html.DisplayNameFor(model => model.Tasks)
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.Tasks)
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Task Name</th>
+                        <th>Description</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var task in Model.Tasks)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(m => task.Name)</td> 
+                            <td>@Html.DisplayFor(m => task.Description)</td> 
+                           
+                        </tr>
+                    }
+                </tbody>
+            </table>
         </dd>
 
         <dt>
@@ -51,11 +68,7 @@
         </dt>
         <dt>
             @Html.DisplayFor(model => model.IsCompleted)
-        </dt>
-@* 
-        <dd>
-            @Html.ActionLink("Location Details", "Details", "Location", new { id = Model.Id })
-        </dd> *@
+        </dt
 
     </dl>
 </div>

@@ -20,6 +20,5 @@ namespace ProjectManagement.Shared.Dtos
 
         public ProjectDto Project { get; set; }
 
-        public virtual List<ReportProjectDto> ReportProjects { get; set; }
     }
 }

@@ -37,10 +37,13 @@
         <dt>
             @Html.DisplayFor(model => model.Deadline)
         </dt>
-
-       @*  <dd>
-            @Html.ActionLink("Location Details", "Details", "Location", new { id = Model.Id })
-        </dd> *@
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dt>
+            @Html.DisplayFor(model => model.User.Username)
+        </dt>
 
     </dl>
 </div>

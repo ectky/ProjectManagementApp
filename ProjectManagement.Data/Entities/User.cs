@@ -19,5 +19,6 @@ namespace ProjectManagement.Data.Entities
 
         public virtual Project Project { get; set; }
         public virtual Role Role { get; set; }
+        public virtual List<Task> Tasks { get; set; }
     }
 }

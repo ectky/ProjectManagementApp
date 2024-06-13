@@ -30,17 +30,25 @@
                         </li>
 
                         <!-- Login and Register links -->
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
-                        </li>
+                        @if (Context.User?.Identity?.IsAuthenticated == true)
+                        {
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">LogOut</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">LogOut</a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
+                            </li>
+                        }
+
+                       
 
                         @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Employee.ToString() ||
                         Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Manager.ToString() ||
@@ -59,14 +67,7 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Report" asp-action="List">Report</a>
                             </li>
                         }
-                        @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Employee.ToString() ||
-                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Manager.ToString() ||
-                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="ReportProject" asp-action="List">ReportProject</a>
-                            </li>
-                        }
+                       
                         @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Employee.ToString() ||
                         Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Manager.ToString() ||
                         Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
@@ -85,8 +86,7 @@
                             </li>
                         }
 
-                        @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Employee.ToString() ||
-                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Manager.ToString() ||
+                        @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Manager.ToString() ||
                         Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
                         {
                             <li class="nav-item">

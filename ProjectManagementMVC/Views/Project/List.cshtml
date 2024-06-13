@@ -61,12 +61,14 @@
                 @Html.DisplayFor(modelItem => item.IsCompleted)
             </td>
             <td>
-                @if (User.IsInRole("Admin"))
+                @if (!User.IsInRole("Employee"))
                 {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id } )
+                    @Html.ActionLink("Edit  ", "Edit", new { id = item.Id }) @:|
+
+                    @Html.ActionLink(" Delete", "Delete", new { id = item.Id }) @:|
                 }
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) 
+                
                 @if (item.IsCompleted) 
                 {
                     <span class="text-success">Проектът е завършен</span>

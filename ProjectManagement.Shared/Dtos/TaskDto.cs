@@ -10,10 +10,7 @@ namespace ProjectManagement.Shared.Dtos
 {
     public class TaskDto : BaseModel
     {
-        public TaskDto()
-        {
-            this.Users = new List<UserDto>();
-        }
+        
         public string Description { get; set; }
         public string Name { get; set; }
         public Status Status { get; set; }
@@ -21,6 +18,8 @@ namespace ProjectManagement.Shared.Dtos
 
         public int ProjectId { get; set; }
         public ProjectDto Project { get; set; }
-        public ICollection<UserDto> Users { get; set; } = new List<UserDto>();
+        public int UserId { get; set; }
+
+        public  UserDto User { get; set; }
     }
 }
