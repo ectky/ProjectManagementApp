@@ -30,12 +30,17 @@ namespace ProjectManagement.Data.Repos
             project.IsCompleted = true;
             await SaveAsync(project);
         }
-        public async System.Threading.Tasks.Task FilterProjectAsync(bool? isCompleted, DateTime? endDate, ProjectDto project)
-        {
-            project.IsCompleted = true;
-            project.EndDate = endDate;
+        public async Task<IEnumerable<ProjectDto>> FilterProjectAsync(int pageSize, int pageNumber)
 
-            await SaveAsync(project);
+        {
+
+            var paginatedRecords = await _dbSet
+                .Where(x => x.IsCompleted)
+                .OrderBy(d => d.EndDate)
+                .Skip((pageNumber - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+            return MapToEnumerableOfModel(paginatedRecords);
         }
 
 

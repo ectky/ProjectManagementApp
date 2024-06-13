@@ -7,6 +7,22 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<div class="btn">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="FilterProject">Filter projects</a>
+    </button>
+</div>
+
+<div class="btn">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="List">Reset</a>
+    </button>
+</div>
+
 <table class="table">
     <tr>
         <th>
@@ -59,14 +75,8 @@
                 @Html.ActionLink("Complete project", "CompleteProject", new { id = item.Id })
                 }
             </td>
-
-            <div class="btn">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="FilterProject">Filter projects</a>
-                </button>
-            </div>
+            
         </tr>
+      
     }
 </table>

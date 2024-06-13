@@ -13,6 +13,6 @@ namespace ProjectManagement.Shared.Repos.Contacts
 
         public Task CompleteProjectAsync(int projectId);
 
-        public Task FilterProjectAsync(bool? isCompleted, DateTime? endDate, ProjectDto project);
+        public Task<IEnumerable<ProjectDto>> FilterProjectAsync(int pageSize, int pageNumber);
     }
 }

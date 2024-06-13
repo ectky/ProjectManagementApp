@@ -46,27 +46,21 @@ namespace ProjectManagementMVC.Controllers
             return await List();
         }
 
+
         [HttpGet]
-        public async Task<IActionResult> FilterProjectAsync()
+        public async Task<IActionResult> FilterProjectAsync(int pageSize = DefaultPageSize,
+            int pageNumber = DefaultPageNumber)
         {
-            var editVM = await PrePopulateVMAsync(new ProjectEditVM());
-            return View(editVM);
-        }
-        [HttpPost]
-        public async Task<IActionResult> FilterProjectAsync(ProjectEditVM editVM)
-        {
-            string loggedUsername = User.FindFirst(ClaimTypes.Name)?.Value;
-            var user = await this._usersService.GetByUsernameAsync(loggedUsername);
-
-            var projectDto = new ProjectDto
+            if (pageSize <= 0 || pageSize > MaxPageSize || pageNumber <= 0)
             {
-                IsCompleted = editVM.IsCompleted,
-                EndDate = editVM.EndDate
-
-            };
-            await this._service.FilterProjectAsync(editVM.IsCompleted, editVM.EndDate, projectDto);
-            return await List();
+                return BadRequest(Constants.InvalidPagination);
+            }
+            var models = await this._service.FilterProjectAsync(pageSize, pageNumber);
+            var mappedModels = _mapper.Map<IEnumerable<ProjectDetailsVM>>(models);
+            return View(nameof(List), mappedModels);
         }
 
     }
+
 }
+

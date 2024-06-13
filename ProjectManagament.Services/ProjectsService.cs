@@ -30,19 +30,10 @@ namespace ProjectManagement.Services
             await _repository.CompleteProjectAsync(projectId);
         }
 
-       
-        public async System.Threading.Tasks.Task FilterProjectAsync(bool? isCompleted, DateTime? endDate, ProjectDto project)
-        {
-            var filteredProjects = await GetAllAsync();
 
-            if (isCompleted.HasValue)
-            {
-                filteredProjects.Where(p => p.IsCompleted == isCompleted.Value).ToList();
-            }
-            if (endDate.HasValue)
-            {
-                filteredProjects.Where(p => p.EndDate <= endDate.Value);
-            }
+        public Task<IEnumerable<ProjectDto>> FilterProjectAsync(int pageSize, int pageNumber)
+        {
+            return _repository.FilterProjectAsync(pageSize,pageNumber);
         }
         public Task<IEnumerable<ProjectDto>> GetAllActiveAsync()
         {
