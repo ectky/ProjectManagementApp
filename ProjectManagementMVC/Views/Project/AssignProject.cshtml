@@ -3,13 +3,10 @@
 @model ProjectManagementMVC.ViewModels.AssignProjectEditVM
 
 @{
-    ViewBag.Title = "Complete Project";
+    ViewBag.Title = "Assign Project";
 }
 
-<link rel="stylesheet" href="~/css/Lists.css">
-
-<body>
-<h2>Complete Project</h2>
+<h2>Get Project</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -31,7 +28,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Complete project" class="btn btn-default" />
+                <input type="submit" value="Assign project" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -39,4 +36,3 @@
 <div>
     @Html.ActionLink("Back to List", "List")
 </div>
-</body>

@@ -25,11 +25,11 @@ namespace ProjectManagement.Services
         {
             if (!await _reportsService.ExistsByIdAsync(reportId))
             {
-                throw new ArgumentException($"Pet with ID {reportId} does not exist.");
+                throw new ArgumentException($"Report with ID {reportId} does not exist.");
             }
             if (!await _projectsService.ExistsByIdAsync(projectId))
             {
-                throw new ArgumentException($"Vaccine with ID {projectId} does not exist.");
+                throw new ArgumentException($"Project with ID {projectId} does not exist.");
             }
 
             await _repository.ReportProjectAsync(reportId, projectId);

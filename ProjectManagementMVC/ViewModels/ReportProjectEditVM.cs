@@ -5,8 +5,6 @@ namespace ProjectManagementMVC.ViewModels
 {
     public class ReportProjectEditVM : BaseVM
     {
-        //[DisplayName("Reports")]
-
         public int ReportId { get; set; }
         public int ProjectId { get; set; }
 

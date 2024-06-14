@@ -80,8 +80,6 @@ namespace ProjectManagementMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> ReportProjectAsync(ReportProjectEditVM editVM)
         {
-            string loggedUsername = User.FindFirst(ClaimTypes.Name)?.Value;
-            var user = await this._usersService.GetByUsernameAsync(loggedUsername);
             await this._reportProjectsService.ReportProjectAsync(editVM.ReportId, editVM.ProjectId);
             return await List();
         }

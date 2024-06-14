@@ -61,7 +61,7 @@
             @Html.LabelFor(model => model.UserId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
-                @Html.DropDownListFor(model => model.UserId, Model.UserList, "Choose a Project...",
+                @Html.DropDownListFor(model => model.UserId, Model.UserList, "Choose a User...",
                          new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.UserId)
             </div>
