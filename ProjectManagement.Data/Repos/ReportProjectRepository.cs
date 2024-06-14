@@ -17,5 +17,10 @@ namespace ProjectManagement.Data.Repos
         public ReportProjectRepository(ProjectManagementDbContext context, IMapper mapper) : base(context, mapper)
         {
         }
+        public async System.Threading.Tasks.Task ReportProjectAsync(int reportId, int projectId)
+        {
+            var reportProject = new ReportProjectDto(reportId, projectId);
+            await SaveAsync(reportProject);
+        }
     }
 }

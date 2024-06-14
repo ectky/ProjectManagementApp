@@ -39,5 +39,20 @@ namespace ProjectManagement.Services
         {
             return _repository.GetAllActiveAsync();
         }
+
+        public async Task AssignProjectAsync(int userId, int projectId)
+        {
+            if (!await _userService.ExistsByIdAsync(userId))
+            {
+                throw new ArgumentException($"Pet with ID {userId} does not exist.");
+            }
+            if (!await ExistsByIdAsync(projectId))
+            {
+                throw new ArgumentException($"Vaccine with ID {projectId} does not exist.");
+            }
+
+            await _repository.AssignProjectAsync(userId, projectId);
+        }
+
     }
 }

@@ -2,9 +2,13 @@
 @using ProjectManagement.Shared.Extensions
 @model ProjectManagementMVC.ViewModels.ProjectEditVM
 
+
 @{
     ViewBag.Title = "Create";
 }
+<link rel="stylesheet" href="~/css/Lists.css">
+
+<body>
 
 <h2>Create a project</h2>
 @using (Html.BeginForm())
@@ -64,3 +68,4 @@
 <div>
     @Html.ActionLink("Back to List", "List")
 </div>
+</body>

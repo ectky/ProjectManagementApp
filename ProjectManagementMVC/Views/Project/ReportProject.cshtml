@@ -1,12 +1,12 @@
 ﻿@using ProjectManagementMVC.Controllers
 @using ProjectManagement.Shared.Extensions
-@model ProjectManagementMVC.ViewModels.CompleteProjectEditVM
+@model ProjectManagementMVC.ViewModels.ReportProjectEditVM
 
 @{
-    ViewBag.Title = "Complete Project";
+    ViewBag.Title = "Report Project";
 }
 
-<h2>Complete Project</h2>
+<h2>Report project</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -20,9 +20,19 @@
             @Html.LabelFor(model => model.ProjectId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
 
-                @Html.DropDownListFor(model => model.ProjectId, Model.ProjectList, "Choose a Project...",
+                @Html.DropDownListFor(model => model.ProjectId, Model.Projects, "Choose a Project...",
                          new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ProjectId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ReportId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+
+                @Html.DropDownListFor(model => model.ReportId, Model.Reports, "Choose a Report...",
+                         new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ReportId)
             </div>
         </div>
 

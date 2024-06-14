@@ -19,14 +19,12 @@
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
-        <dt>
+        <dd>
             @Html.DisplayFor(model => model.Description)
-        </dt>
+        </dd>
        
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+        
         <dd>
             @if (Model.ReportProjects != null && Model.ReportProjects.Any())
             {

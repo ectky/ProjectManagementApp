@@ -14,11 +14,10 @@ namespace ProjectManagement.Services
     [AutoBind]
     public class UsersService : BaseCrudService<UserDto, IUserRepository>, IUsersService
     {
-        private readonly IUserRepository userRepository;
 
-        public UsersService(IUserRepository repository) : base(repository)
+
+        public UsersService(IUserRepository repository ) : base(repository)
         {
-            userRepository = repository;
         }
 
         public async Task<bool> CanUserLoginAsync(string username, string password)
@@ -37,7 +36,10 @@ namespace ProjectManagement.Services
 
         public async Task<UserDto> GetByUsernameAsync(string username)
         {
-            return await userRepository.GetByUsernameAsync(username);
+            return await _repository.GetByUsernameAsync(username);
         }
+
+       
+            
     }
 }

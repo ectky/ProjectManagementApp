@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProjectManagementMVC.ViewModels
 {
@@ -9,10 +10,13 @@ namespace ProjectManagementMVC.ViewModels
             this.ReportProjects = new List<ReportProjectDetailsVM>();
         }
         [DisplayName("Project name")]
+
         public string Name { get; set; }
+        [DataType(DataType.Date)]
         [DisplayName("Start Date")]
         public DateTime? StartDate { get; set; }
         public string Description { get; set; }
+        [DataType(DataType.Date)]
         [DisplayName("End Date")]
         public DateTime? EndDate { get; set; }
         [DisplayName("Is Completed")]

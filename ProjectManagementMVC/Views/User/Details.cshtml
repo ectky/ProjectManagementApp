@@ -28,15 +28,21 @@
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
-        <dt>
+        <dd>
             @Html.DisplayFor(model => model.FirstName)
-        </dt>
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.LastName)
         </dt>
-        <dt>
+        <dd>
             @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ProjectId)
         </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Project.Name)
+        </dd>
 
         
 

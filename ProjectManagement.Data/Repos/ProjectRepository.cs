@@ -10,15 +10,17 @@ using System.Threading.Tasks;
 using ProjectManagement.Shared.Attributes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
+using ProjectManagement.Shared.Services.Contracts;
 
 namespace ProjectManagement.Data.Repos
 {
     [AutoBind]
     public class ProjectRepository : BaseRepository<Project, ProjectDto>, IProjectRepository
     {
-        public ProjectRepository(ProjectManagementDbContext context, IMapper mapper) : base(context, mapper)
+        private IUsersService _usersService;
+        public ProjectRepository(ProjectManagementDbContext context, IMapper mapper, IUsersService _usersService) : base(context, mapper)
         {
-
+            this._usersService = _usersService;
         }
         public async Task<IEnumerable<ProjectDto>> GetAllActiveAsync()
         {
@@ -42,8 +44,12 @@ namespace ProjectManagement.Data.Repos
                 .ToListAsync();
             return MapToEnumerableOfModel(paginatedRecords);
         }
-
-
+        public async System.Threading.Tasks.Task AssignProjectAsync(int userId, int projectId)
+        {
+            var user = await _usersService.GetByIdIfExistsAsync(userId);
+            user.ProjectId = projectId;
+            await _usersService.SaveAsync(user);
+        }
 
 
     }
