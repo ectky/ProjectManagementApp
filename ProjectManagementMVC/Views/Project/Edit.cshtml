@@ -1,8 +1,12 @@
 ﻿@model ProjectManagementMVC.ViewModels.ProjectEditVM
 
 @{ ViewBag.Title = "Edit"; }
+<link rel="stylesheet" href="~/css/Edit.css">
+
+<body>
 
 <h2>Edit</h2>
+
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
@@ -63,3 +67,4 @@
 <div>
     @Html.ActionLink("Back to List", "List")
 </div>
+</body>

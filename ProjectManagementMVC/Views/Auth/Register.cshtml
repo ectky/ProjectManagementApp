@@ -5,14 +5,15 @@
 @{
     ViewBag.Title = "Register";
 }
+<link rel="stylesheet" href="~/css/Login.css">
 
+<body>
 <h2>Register</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>User</h4>
         <hr />
         @Html.ValidationSummary(true)
         <div class="form-group">
@@ -57,3 +58,4 @@
         </div>
     </div>
 }
+</body>
