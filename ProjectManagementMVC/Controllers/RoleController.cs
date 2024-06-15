@@ -8,7 +8,7 @@ using ProjectManagementMVC.ViewModels;
 
 namespace ProjectManagementMVC.Controllers
 {
-    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme, Roles = "Admin, Employee")]
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme, Roles = "Admin, Employee, Manager")]
     public class RoleController : BaseCrudController<RoleDto, IRoleRepository, IRolesService, RoleEditVM, RoleDetailsVM>
     {
         public RoleController(IRolesService service, IMapper mapper) : base(service, mapper)

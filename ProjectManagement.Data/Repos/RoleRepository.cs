@@ -26,7 +26,7 @@ namespace ProjectManagement.Data.Repos
         public async Task<RoleDto> GetByNameIfExistsAsync(string roleName)
         {
             var role = await _context.Roles
-                .FirstOrDefaultAsync(r => r.Name.Equals(roleName, StringComparison.OrdinalIgnoreCase));
+                .FirstOrDefaultAsync(r => r.Name == roleName);
 
             return mapper.Map<RoleDto>(role);
         }

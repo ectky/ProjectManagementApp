@@ -7,7 +7,6 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Product</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -29,18 +28,21 @@
         <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
-        <dt>
+        <dd>
             @Html.DisplayFor(model => model.Description)
-        </dt>
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Deadline)
         </dt>
-        <dt>
-            @Html.DisplayFor(model => model.Deadline)
-        </dt>
-
         <dd>
-            @Html.ActionLink("Location Details", "Details", "Location", new { id = Model.Id })
+            @Html.DisplayFor(model => model.Deadline)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.User.Username)
         </dd>
 
     </dl>

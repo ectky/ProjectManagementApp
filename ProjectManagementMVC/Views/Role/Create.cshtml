@@ -3,15 +3,17 @@
 @model ProjectManagementMVC.ViewModels.RoleEditVM
 
 @{
-    ViewBag.Title = "Create";
+    @if (User.IsInRole("Admin"))
+    {
+        ViewBag.Title = "Create";
+    }
 }
 
-<h2>Create</h2>
+<h2>Create a role</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
-        <h4>Product</h4>
         <hr />
         @Html.ValidationSummary(true)
 

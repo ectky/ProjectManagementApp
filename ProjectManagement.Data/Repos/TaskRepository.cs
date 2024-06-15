@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProjectManagement.Shared.Attributes;
 using Task = ProjectManagement.Data.Entities.Task;
+using Microsoft.EntityFrameworkCore;
 
 namespace ProjectManagement.Data.Repos
 {
@@ -18,5 +19,6 @@ namespace ProjectManagement.Data.Repos
         public TaskRepository(ProjectManagementDbContext context, IMapper mapper) : base(context, mapper)
         {
         }
+        
     }
 }

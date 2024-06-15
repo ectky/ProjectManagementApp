@@ -9,8 +9,14 @@ namespace ProjectManagement.Data.Entities
     public class Report: BaseEntity
     {
 
+        public Report() 
+        {
+            this.ReportProjects = new List<ReportProject>();
+        }
         public string Name {  get; set; }
 
         public string Description { get; set; }
+
+        public virtual List<ReportProject> ReportProjects { get; set; }
     }
 }

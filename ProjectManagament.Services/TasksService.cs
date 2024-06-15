@@ -10,12 +10,14 @@ using ProjectManagement.Shared.Attributes;
 
 namespace ProjectManagement.Services
 {
+    [AutoBind]
+
     public class TasksService : BaseCrudService<TaskDto, ITaskRepository>, ITasksService
     {
-        [AutoBind]
         public TasksService(ITaskRepository repository) : base(repository)
         {
-
+            
         }
+       
     }
 }

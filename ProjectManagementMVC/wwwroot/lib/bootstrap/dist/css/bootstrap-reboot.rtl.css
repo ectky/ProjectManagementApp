@@ -359,13 +359,13 @@ legend + * {
   clear: right;
 }
 
-::-webkit-datetime-edit-fields-wrapper,
-::-webkit-datetime-edit-text,
-::-webkit-datetime-edit-minute,
-::-webkit-datetime-edit-hour-field,
-::-webkit-datetime-edit-day-field,
-::-webkit-datetime-edit-month-field,
-::-webkit-datetime-edit-year-field {
+::-webkit-DateTime-edit-fields-wrapper,
+::-webkit-DateTime-edit-text,
+::-webkit-DateTime-edit-minute,
+::-webkit-DateTime-edit-hour-field,
+::-webkit-DateTime-edit-day-field,
+::-webkit-DateTime-edit-month-field,
+::-webkit-DateTime-edit-year-field {
   padding: 0;
 }
 

@@ -11,5 +11,8 @@ namespace ProjectManagement.Shared.Services.Contracts
 {
     public interface IReportProjectsService : IBaseCrudService<ReportProjectDto, IReportProjectRepository>
     {
+        public Task ReportProjectAsync(int userId, int projectId);
+
+
     }
 }

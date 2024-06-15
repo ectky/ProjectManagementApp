@@ -15,7 +15,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ProjectManagementMVC</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Project Management</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -28,26 +28,74 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        
+
+                        <!-- Login and Register links -->
+                        @if (Context.User?.Identity?.IsAuthenticated == true)
+                        {
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Logout">LogOut</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
+                            </li>
+                        }
+
+                       
+
+                        @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Employee.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Manager.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="List">Project</a>
+                            </li>
+                        }
+
+                        @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Employee.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Manager.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Report" asp-action="List">Report</a>
+                            </li>
+                        }
+                       
+                        @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Employee.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Manager.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Role" asp-action="List">Role</a>
+                            </li>
+                        }
+
+                        @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Employee.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Manager.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Task" asp-action="List">Task</a>
+                            </li>
+                        }
+
+                        @if (Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Manager.ToString() ||
+                        Context.User?.FindFirst(ClaimTypes.Role)?.Value == UserRole.Admin.ToString())
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="List">User</a>
+                            </li>
+                        }
 
                     </ul>
-                    
-                    <!-- Login and Register links -->
-                    @if (Context.User.Identity.IsAuthenticated)
-                    {
-                        <div style="margin-right: 30px;">
-                            <a asp-controller="Auth" asp-action="ConfirmLogout" class="nav-link">Logout</a>
-                        </div>
-                    }
-                    else
-                    {
-                        <div style="margin-right: 10px;">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Login">Login</a>
-                        </div>
-                        <div style="margin-right: 30px;">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="Register">Register</a>
-                        </div>
-                    }
+
                 </div>
             </div>
         </nav>

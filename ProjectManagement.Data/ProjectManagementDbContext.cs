@@ -45,20 +45,24 @@ namespace ProjectManagement.Data
                 .HasForeignKey(t => t.ProjectId)
                 .OnDelete(DeleteBehavior.Restrict); // Change Cascade to Restrict
 
+
+
             modelBuilder.Entity<ReportProject>()
                 .HasKey(rp => rp.Id);
 
             modelBuilder.Entity<ReportProject>()
                 .HasOne(rp => rp.Report)
-                .WithMany()
+                .WithMany(rp=>rp.ReportProjects)
                 .HasForeignKey(rp => rp.ReportId)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<ReportProject>()
                 .HasOne(rp => rp.Project)
-                .WithMany()
+                .WithMany(rp => rp.ReportProjects)
                 .HasForeignKey(rp => rp.ProjectId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            
 
             modelBuilder.Entity<Role>()
                 .HasMany(r => r.Users)
@@ -67,9 +71,10 @@ namespace ProjectManagement.Data
                 .OnDelete(DeleteBehavior.Restrict); // Change Cascade to Restrict
 
             modelBuilder.Entity<Task>()
-                .HasMany(t => t.Users)
-                .WithOne()
-                .OnDelete(DeleteBehavior.Restrict); // Change Cascade to Restrict
+              .HasOne(t => t.User)
+              .WithMany(p => p.Tasks)
+              .HasForeignKey(t => t.UserId)
+              .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Task>()
                 .HasOne(t => t.Project)

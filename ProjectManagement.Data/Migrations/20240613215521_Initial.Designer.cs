@@ -12,15 +12,15 @@ using ProjectManagement.Data;
 namespace ProjectManagement.Data.Migrations
 {
     [DbContext(typeof(ProjectManagementDbContext))]
-    [Migration("20240519174453_InitialCrate")]
-    partial class InitialCrate
+    [Migration("20240613215521_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.4")
+                .HasAnnotation("ProductVersion", "8.0.6")
                 .HasAnnotation("Proxies:ChangeTracking", false)
                 .HasAnnotation("Proxies:CheckEquality", false)
                 .HasAnnotation("Proxies:LazyLoading", true)
@@ -161,9 +161,14 @@ namespace ProjectManagement.Data.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("ProjectId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Tasks");
                 });
@@ -198,9 +203,6 @@ namespace ProjectManagement.Data.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TaskId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -211,8 +213,6 @@ namespace ProjectManagement.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.HasIndex("TaskId");
-
                     b.ToTable("Users");
 
                     b.HasData(
@@ -222,7 +222,7 @@ namespace ProjectManagement.Data.Migrations
                             Email = "admin@example.com",
                             FirstName = "Admin",
                             LastName = "User",
-                            Password = "evmp3wGhwVMrmoJrUg1IRKOq2593NdZ+WtKMkByItMSBUzLRXEJxnwn/YvAWoK5E",
+                            Password = "W5vjlN5DbVo6PXrIujWQIFTSCzZz59+Kp0fabDtL0NndIl5EtPiC37ci0Mg+v/nv",
                             RoleId = 2,
                             Username = "admin"
                         });
@@ -231,13 +231,13 @@ namespace ProjectManagement.Data.Migrations
             modelBuilder.Entity("ProjectManagement.Data.Entities.ReportProject", b =>
                 {
                     b.HasOne("ProjectManagement.Data.Entities.Project", "Project")
-                        .WithMany()
+                        .WithMany("ReportProjects")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ProjectManagement.Data.Entities.Report", "Report")
-                        .WithMany()
+                        .WithMany("ReportProjects")
                         .HasForeignKey("ReportId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -255,7 +255,15 @@ namespace ProjectManagement.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("ProjectManagement.Data.Entities.User", "User")
+                        .WithMany("Tasks")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.Navigation("Project");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("ProjectManagement.Data.Entities.User", b =>
@@ -271,11 +279,6 @@ namespace ProjectManagement.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("ProjectManagement.Data.Entities.Task", null)
-                        .WithMany("Users")
-                        .HasForeignKey("TaskId")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.Navigation("Project");
 
                     b.Navigation("Role");
@@ -283,9 +286,16 @@ namespace ProjectManagement.Data.Migrations
 
             modelBuilder.Entity("ProjectManagement.Data.Entities.Project", b =>
                 {
+                    b.Navigation("ReportProjects");
+
                     b.Navigation("Tasks");
 
                     b.Navigation("Users");
+                });
+
+            modelBuilder.Entity("ProjectManagement.Data.Entities.Report", b =>
+                {
+                    b.Navigation("ReportProjects");
                 });
 
             modelBuilder.Entity("ProjectManagement.Data.Entities.Role", b =>
@@ -293,9 +303,9 @@ namespace ProjectManagement.Data.Migrations
                     b.Navigation("Users");
                 });
 
-            modelBuilder.Entity("ProjectManagement.Data.Entities.Task", b =>
+            modelBuilder.Entity("ProjectManagement.Data.Entities.User", b =>
                 {
-                    b.Navigation("Users");
+                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }

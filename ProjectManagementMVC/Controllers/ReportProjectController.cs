@@ -8,7 +8,7 @@ using ProjectManagementMVC.ViewModels;
 
 namespace ProjectManagementMVC.Controllers
 {
-    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme, Roles = "Admin, Employee")]
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme, Roles = "Admin, Employee, Manager")]
     public class ReportProjectController : BaseCrudController<ReportProjectDto, IReportProjectRepository, IReportProjectsService, ReportProjectEditVM, ReportProjectDetailsVM>
     {
         public ReportProjectController(IReportProjectsService service, IMapper mapper) : base(service, mapper)

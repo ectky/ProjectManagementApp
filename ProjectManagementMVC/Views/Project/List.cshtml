@@ -1,21 +1,42 @@
-﻿@model IEnumerable<ProjectManagementMVC.ViewModels.ProjectDetailsVM>
+﻿
+@model IEnumerable<ProjectManagementMVC.ViewModels.ProjectDetailsVM>
+
 @{
     ViewBag.Title = "Index";
 }
-<h2>Index</h2>
+<link rel="stylesheet" href="~/css/Lists.css">
+
+<body>
+<h2>Projects</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<div class="btn">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="FilterProject">Filter projects</a>
+    </button>
+</div>
+
+<div class="btn">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="List">Reset</a>
+    </button>
+</div>
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.StartDate)
+            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.StartDate)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.EndDate)
@@ -29,25 +50,41 @@
     {
         <tr>
             <td>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.StartDate)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.Description)
+                @Html.DisplayFor(modelItem => item.StartDate)
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.EndDate)
+                @Html.DisplayFor(modelItem => item.EndDate)
             </td>
             <td>
-                @Html.DisplayNameFor(model => model.IsCompleted)
+                @Html.DisplayFor(modelItem => item.IsCompleted)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @if (!User.IsInRole("Employee"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) @:|
+
+                    @Html.ActionLink(" Delete", "Delete", new { id = item.Id }) @:|
+                }
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                @Html.ActionLink("Report Project", "ReportProject", new { id = item.Id }) |
+                @Html.ActionLink("Assign Project", "AssignProject", new { id = item.Id }) |
+                @if (item.IsCompleted) 
+                {
+                    <span class="text-success">Проектът е завършен</span>
+                }
+                else{
+                @Html.ActionLink("Complete project", "CompleteProject", new { id = item.Id })
+                }
             </td>
+            
         </tr>
+      
     }
 </table>
+</body>

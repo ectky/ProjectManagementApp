@@ -1,40 +1,34 @@
 ﻿@using ProjectManagementMVC.Controllers
 @using ProjectManagement.Shared.Extensions
-@model ProjectManagementMVC.ViewModels.ReportProjectEditVM
+@model ProjectManagementMVC.ViewModels.AssignProjectEditVM
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Assign Project";
 }
 
-<h2>Create</h2>
+<h2>Get Project</h2>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
-        <h4>Product</h4>
+
         <hr />
         @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ReportId, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ReportId)
-                @Html.ValidationMessageFor(model => model.ReportId)
-            </div>
-        </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.ProjectId, new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ProjectId)
+
+                @Html.DropDownListFor(model => model.ProjectId, Model.ProjectList, "Choose a Project...",
+                         new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ProjectId)
             </div>
         </div>
 
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Assign project" class="btn btn-default" />
             </div>
         </div>
     </div>
