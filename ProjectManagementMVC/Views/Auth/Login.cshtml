@@ -1,40 +1,32 @@
-﻿@using ProjectManagementMVC.Controllers
-@using ProjectManagement.Shared.Extensions
-@model ProjectManagementMVC.ViewModels.LoginVM
+﻿@model ProjectManagementMVC.ViewModels.LoginVM
 
 @{
-    ViewBag.Title = "Login";
+    ViewData["Title"] = "Log in";
 }
 
-<h2>Login</h2>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true)
+<h1 class="text-center">@ViewData["Title"]</h1>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2 " })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Username)
-                @Html.ValidationMessageFor(model => model.Username)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2 " })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Password)
-                @Html.ValidationMessageFor(model => model.Password)
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Login" class="btn btn-default" />
-            </div>
-        </div>
-
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <section>
+            <form id="account" method="post">
+                @Html.AntiForgeryToken()
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="text-center mb-3">
+                    <label asp-for="Username" class="form-label"></label>
+                    <input asp-for="Username" class="form-control" autocomplete="username" aria-required="true" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div class="text-center mb-3">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" type="password" class="form-control" autocomplete="current-password" aria-required="true" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="text-center">
+                    <button id="login-submit" type="submit" class="btn btn-primary">Log in</button>
+                </div>
+            </form>
+        </section>
     </div>
-}
+</div>

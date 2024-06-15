@@ -3,49 +3,41 @@
 @{
     ViewBag.Title = "Delete";
 }
-<h2>Delete</h2>
-<h3 class="delete">Are you sure you want to delete this?</h3>
-<div>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Lists.css"> 
+    <link rel="stylesheet" href="~/css/DeleteTask.css"> 
+</head>
+
+<body>
+<div class="container">
+    <h2>Delete Task</h2>
+    <h3 class="delete-message">Are you sure you want to delete this?</h3>
+
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Name)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Description)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Status)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Status)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Deadline)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Deadline)
-        </dd>
-
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Deadline)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Deadline)</dd>
     </dl>
+
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" />
-            @Html.ActionLink("Back to List", "List")
+        <div class="form-actions">
+            <input type="submit" value="Delete" class="btn btn-danger" />
+            <a href="@Url.Action("List")" class="btn btn-secondary">Back to List</a>
         </div>
     }
 </div>
+</body>

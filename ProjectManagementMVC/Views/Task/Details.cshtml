@@ -4,50 +4,37 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Lists.css"> <!-- Assuming this is your custom CSS for lists -->
+</head>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+<body class="bg-light">
+<div class="container mt-5">
+    <h2>Task Details</h2>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">Name:</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+            <dt class="col-sm-3">Description:</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
+            <dt class="col-sm-3">Status:</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Status)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
+            <dt class="col-sm-3">Deadline:</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Deadline)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Deadline)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Deadline)
-        </dd>
-        
-        <dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.User.Username)
-        </dd>
+            <dt class="col-sm-3">Assigned User:</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.User.Username)</dd>
+        </dl>
 
-    </dl>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+            <a href="@Url.Action("List")" class="btn btn-secondary">Back to List</a>
+        </p>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) ||
-    @Html.ActionLink("Back to List", "List")
-</p>
+</body>

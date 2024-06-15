@@ -4,68 +4,74 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Lists.css">
+</head>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2>Details</h2>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="row">
+                    <dt class="col-sm-4">Name:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Name)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-       
+                    <dt class="col-sm-4">Description:</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Description)</dd>
+                </dl>
+            </div>
+        </div>
 
-        
-        <dd>
+        <div class="mt-4">
             @if (Model.ReportProjects != null && Model.ReportProjects.Any())
             {
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>Tasks</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var reportProject in Model.ReportProjects)
-                        {
+                <h4>Project Tasks</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <td>@Html.DisplayFor(modelItem => reportProject.Project.Name)</td>
-                                <td>
-                                    @foreach (var task in reportProject.Project.Tasks)
-                                    {
-                                        <div>@Html.DisplayFor(modelItem => task.Name)</div>
-                                    }
-                                </td>
-                                <td>
-                                    @foreach (var task in reportProject.Project.Tasks)
-                                    {
-                                        <div>@Html.DisplayFor(modelItem => task.Status)</div>
-                                    }
-                                </td>
+                                <th>Project</th>
+                                <th>Tasks</th>
+                                <th>Status</th>
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach (var reportProject in Model.ReportProjects)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(modelItem => reportProject.Project.Name)</td>
+                                    <td>
+                                        @foreach (var task in reportProject.Project.Tasks)
+                                        {
+                                            <div>@Html.DisplayFor(modelItem => task.Name)</div>
+                                        }
+                                    </td>
+                                    <td>
+                                        @foreach (var task in reportProject.Project.Tasks)
+                                        {
+                                            <div>@Html.DisplayFor(modelItem => task.Status)</div>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
             }
             else
             {
-                <p>Проектът няма зададена задача.</p>
+                <p>No tasks assigned to this project.</p>
             }
-        </dd>
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) ||
-    @Html.ActionLink("Back to List", "List")
-</p>
+        </div>
+
+        <div class="mt-4">
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Back to List", "List", new { }, new { @class = "btn btn-secondary ml-2" })
+            </p>
+        </div>
+    </div>
+</body>

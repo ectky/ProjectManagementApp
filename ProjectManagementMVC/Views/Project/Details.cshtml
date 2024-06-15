@@ -3,78 +3,65 @@
 @{
     ViewBag.Title = "Details";
 }
-<link rel="stylesheet" href="~/css/Lists.css">
 
-<body>
-<h2>Details</h2>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Lists.css">
+</head>
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2>Details</h2>
+        <div>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-3">Name:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+                <dt class="col-sm-3">Start Date:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.StartDate)</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
+                <dt class="col-sm-3">Description:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.Description)</dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <br />
-       
-        <dd>
-            <table class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>Task Name</th>
-                        <th>Description</th>
-                       
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var task in Model.Tasks)
+                <dt class="col-sm-3">Tasks:</dt>
+                <dd class="col-sm-9">
+                    @if (Model.Tasks != null && Model.Tasks.Any())
                     {
-                        <tr>
-                            <td>@Html.DisplayFor(m => task.Name)</td> 
-                            <td>@Html.DisplayFor(m => task.Description)</td> 
-                           
-                        </tr>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Task Name</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var task in Model.Tasks)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m => task.Name)</td>
+                                        <td>@Html.DisplayFor(m => task.Description)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
                     }
-                </tbody>
-            </table>
-        </dd>
+                    else
+                    {
+                        <p>No tasks assigned to this project.</p>
+                    }
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.EndDate)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.IsCompleted)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.IsCompleted)
-        </dd>
+                <dt class="col-sm-3">End Date:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.EndDate)</dd>
 
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) ||
-    @Html.ActionLink("Back to List", "List")
-</p>
+                <dt class="col-sm-3">Is Completed:</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.IsCompleted)</dd>
+            </dl>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+                <a href="@Url.Action("List")" class="btn btn-secondary">Back to List</a>
+            </p>
+        </div>
+    </div>
 </body>

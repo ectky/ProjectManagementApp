@@ -1,0 +1,11 @@
+﻿.table-actions {
+    white-space: nowrap;
+}
+
+    .table-actions a {
+        margin-right: 10px;
+    }
+
+        .table-actions a:last-child {
+            margin-right: -70px;
+        }

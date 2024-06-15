@@ -1,0 +1,16 @@
+﻿
+.card {
+    margin-top: 20px;
+}
+
+.card-header {
+    font-size: 1.5em;
+}
+
+.btn {
+    width: 200px;
+}
+
+.form-check-input {
+    margin-left: 7px !important;
+}

@@ -3,35 +3,40 @@
 @model ProjectManagementMVC.ViewModels.RoleEditVM
 
 @{
-    @if (User.IsInRole("Admin"))
+    if (User.IsInRole("Admin"))
     {
         ViewBag.Title = "Create";
     }
 }
 
-<h2>Create a role</h2>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true)
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Lists.css">
+    <link rel="stylesheet" href="~/css/RoleCss/CreateRole.css">
+</head>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
-            </div>
-        </div>
+<body>
+    <div class="container">
+        <h2>Create a Role</h2>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="card">
+                <div class="card-body">
+                    @Html.ValidationSummary(true)
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "col-form-label" })
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-create">Create</button>
+                        @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-back" })
+                    </div>
+                </div>
             </div>
-        </div>
+        }
     </div>
-}
-<div>
-    @Html.ActionLink("Back to List", "List")
-</div>
+</body>
