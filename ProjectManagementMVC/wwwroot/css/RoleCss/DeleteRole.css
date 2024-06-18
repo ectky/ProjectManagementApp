@@ -1,0 +1,16 @@
+﻿.container {
+    max-width: 600px;
+    margin-top: 50px;
+}
+
+.delete {
+    color: #dc3545;
+}
+
+.dl-horizontal dt {
+    width: 160px;
+}
+
+.form-actions {
+    margin-top: 20px;
+}

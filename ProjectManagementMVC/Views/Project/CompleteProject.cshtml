@@ -6,37 +6,41 @@
     ViewBag.Title = "Complete Project";
 }
 
-<link rel="stylesheet" href="~/css/Lists.css">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="~/css/ProjectCss/Complete.css" rel="stylesheet" type="text/css"/>
+    <link rel="stylesheet" href="~/css/Lists.css">
+</head>
 
 <body>
-    <h2>Complete Project</h2>
+<div class="container">
+    <h2 class="text-center">Complete Project</h2>
+
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
+
         <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <hr />
-            @Html.ValidationSummary(true)
+            <h3 class="text-center mb-4">Please choose a project to mark it as completed</h3>
 
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ProjectId, new { @class = "control-label col-md-2" })
+            <div class="form-group row">
+                @Html.LabelFor(model => model.ProjectId, new { @class = "col-md-2 col-form-label text-md-right" })
                 <div class="col-md-10">
-
                     @Html.DropDownListFor(model => model.ProjectId, Model.ProjectList, "Choose a Project...",
-                             new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.ProjectId)
+                        new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ProjectId, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Complete project" class="btn btn-default" />
+            <div class="form-group row">
+                <div class="offset-md-2 col-md-10">
+                    <button type="submit" class="btn btn-primary mr-2">Complete Project</button>
+                    <a href="@Url.Action("List")" class="btn btn-secondary">Back to List</a>
                 </div>
             </div>
         </div>
     }
-    <div>
-        @Html.ActionLink("Back to List", "List")
-    </div>
+</div>
 </body>

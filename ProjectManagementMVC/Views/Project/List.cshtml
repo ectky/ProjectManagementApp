@@ -1,90 +1,100 @@
-﻿
-@model IEnumerable<ProjectManagementMVC.ViewModels.ProjectDetailsVM>
+﻿@model IEnumerable<ProjectManagementMVC.ViewModels.ProjectDetailsVM>
 
 @{
-    ViewBag.Title = "Index";
+    ViewData["Title"] = "Projects";
 }
-<link rel="stylesheet" href="~/css/Lists.css">
 
-<body>
-<h2>Projects</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<div class="btn">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="FilterProject">Filter projects</a>
-    </button>
-</div>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Lists.css">
+</head>
 
-<div class="btn">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-            aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        <a class="nav-link text-dark" asp-area="" asp-controller="Project" asp-action="List">Reset</a>
-    </button>
-</div>
+<div class="container mt-4">
+    <h2>Projects</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EndDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsCompleted)
-        </th>
-        <th>Actions</th>
-    </tr>
-    @foreach (var item in Model)
-    {
+    <div class="row mb-3">
+        <div class="col-md-auto">
+            <a href="@Url.Action("FilterProject")" class="btn btn-outline-dark btn-sm">
+                Filter projects
+            </a>
+        </div>
+        <div class="col-md-auto">
+            <a href="@Url.Action("List")" class="btn btn-outline-dark btn-sm ml-2">
+                Reset
+            </a>
+        </div>
+    </div>
+
+
+
+    <div id="filterCollapse" class="collapse">
+        <form action="@Url.Action("FilterProject")" method="get">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="filterName">Name</label>
+                    <input type="text" id="filterName" name="Name" class="form-control" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="filterStartDate">Start Date</label>
+                    <input type="date" id="filterStartDate" name="StartDate" class="form-control" />
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="filterEndDate">End Date</label>
+                    <input type="date" id="filterEndDate" name="EndDate" class="form-control" />
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Apply Filter</button>
+        </form>
+    </div>
+
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EndDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsCompleted)
-            </td>
-            <td>
-                @if (!User.IsInRole("Employee"))
-                {
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) @:|
-
-                    @Html.ActionLink(" Delete", "Delete", new { id = item.Id }) @:|
-                }
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Report Project", "ReportProject", new { id = item.Id }) |
-                @Html.ActionLink("Assign Project", "AssignProject", new { id = item.Id }) |
-                @if (item.IsCompleted) 
-                {
-                    <span class="text-success">Проектът е завършен</span>
-                }
-                else{
-                @Html.ActionLink("Complete project", "CompleteProject", new { id = item.Id })
-                }
-            </td>
-            
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+            <th scope="col">Is Completed</th>
+            <th scope="col">Actions</th>
         </tr>
-      
-    }
-</table>
-</body>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                <td>@Html.DisplayFor(modelItem => item.StartDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.EndDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.IsCompleted)</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        @if (!User.IsInRole("Employee"))
+                        {
+                            <a href="@Url.Action("Edit", new { id = item.Id })" class="btn btn-sm btn-outline-primary">Edit</a>
+                            <a href="@Url.Action("Delete", new { id = item.Id })" class="btn btn-sm btn-outline-danger">Delete</a>
+                        }
+                        <a href="@Url.Action("Details", new { id = item.Id })" class="btn btn-sm btn-outline-info">Details</a>
+                        <a href="@Url.Action("ReportProject", new { id = item.Id })" class="btn btn-sm btn-outline-info">Report Project</a>
+                        <a href="@Url.Action("AssignProject", new { id = item.Id })" class="btn btn-sm btn-outline-info">Assign Project</a>
+                        @if (item.IsCompleted)
+                        {
+                            <span class="btn btn-sm btn-success disabled">Project Completed</span>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("CompleteProject", new { id = item.Id })" class="btn btn-sm btn-outline-success">Complete Project</a>
+                        }
+                    </div>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <div class="text-left mb-3">
+        <a href="@Url.Action("Create")" class="btn btn-primary">Create New</a>
+    </div>
+
+</div>
+

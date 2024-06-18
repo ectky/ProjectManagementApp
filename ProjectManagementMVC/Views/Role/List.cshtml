@@ -1,41 +1,46 @@
 ﻿@model IEnumerable<ProjectManagementMVC.ViewModels.RoleDetailsVM>
+
 @{
     ViewBag.Title = "Index";
 }
-<h2>Roles</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        
 
-        <th>Actions</th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Lists.css">
+    <link rel="stylesheet" href="~/css/RoleCss/ListRole.css">
+</head>
 
-            <td>
-                @if (!User.IsInRole("Employee"))
+<body>
+    <div class="container">
+        <h2>Roles</h2>
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
                 {
-                    @Html.ActionLink("Edit  ", "Edit", new { id = item.Id }) @:|
-
-                    @Html.ActionLink(" Delete", "Delete", new { id = item.Id }) @:|
- 
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td class="action-links">
+                            @if (!User.IsInRole("Employee"))
+                            {
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" })
+                                @Html.Raw("| ")
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
+                                @Html.Raw("|")
+                            }
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-sm btn-info" })
+                        </td>
+                    </tr>
                 }
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                
-
-            </td>
-        </tr>
-    }
-</table>
-
+            </tbody>
+        </table>
+    </div>
+</body>

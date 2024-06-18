@@ -1,0 +1,36 @@
+﻿.container {
+    max-width: 600px; 
+    margin-top: 50px; 
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.btn-create {
+    background-color: #007bff; 
+    border-color: #007bff;
+    color: white;
+}
+
+    .btn-create:hover {
+        background-color: #0056b3; 
+        border-color: #0056b3;
+    }
+
+.btn-back {
+    background-color: #6c757d; 
+    border-color: #6c757d;
+}
+
+    .btn-back:hover {
+        background-color: #5a6268; 
+        border-color: #5a6268;
+    }
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px; 
+}

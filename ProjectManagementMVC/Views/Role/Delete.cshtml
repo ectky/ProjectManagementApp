@@ -3,26 +3,31 @@
 @{
     ViewBag.Title = "Delete";
 }
-<h2>Delete</h2>
-<h3 class ="delete">>Are you sure you want to delete this?</h3>
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Lists.css">
+    <link rel="stylesheet" href="~/css/RoleCss/DeleteRole.css">
+</head>
 
-    </dl>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" />
-            @Html.ActionLink("Back to List", "List")
-        </div>
-    }
+<body class="bg-light">
+<div class="container mt-5">
+    <h2>Delete</h2>
+    <h3 class="text-danger">Are you sure you want to delete this?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>@Html.DisplayNameFor(model => model.Name)</dt>
+            <dd>@Html.DisplayFor(model => model.Name)</dd>
+        </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-actions">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                <a href="@Url.Action("List")" class="btn btn-secondary">Back to List</a>
+            </div>
+        }
+    </div>
 </div>
+</body>

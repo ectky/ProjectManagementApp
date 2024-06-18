@@ -1,0 +1,17 @@
+﻿.delete-message {
+    margin-bottom: 20px;
+}
+
+.form-actions {
+    margin-top: 20px;
+}
+
+.dl-horizontal dt {
+    text-align: left; 
+    width: 25%; 
+    font-weight: bold; 
+}
+
+.dl-horizontal dd {
+    margin-left: 30%; 
+}

@@ -1,0 +1,33 @@
+﻿.container {
+    max-width: 600px;
+    margin-top: 50px;
+}
+
+.form-control {
+    border-radius: 0;
+}
+
+.btn-save {
+    background-color: #007bff;
+    border-color: #007bff;
+    width: 100%;
+    color: white;
+}
+
+.btn-back {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    width: 100%;
+}
+
+    .btn-back:hover {
+        background-color: #5a6268;
+        border-color: #5a6268;
+    }
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}

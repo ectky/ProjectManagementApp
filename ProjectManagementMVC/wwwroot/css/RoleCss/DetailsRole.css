@@ -1,0 +1,13 @@
+﻿.container {
+    max-width: 600px; 
+    margin-top: 50px; 
+}
+
+.dl-horizontal dt {
+    width: 160px; 
+    font-weight: bold; 
+}
+
+.actions {
+    margin-top: 20px; 
+}

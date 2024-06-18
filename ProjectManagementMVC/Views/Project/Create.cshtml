@@ -2,70 +2,69 @@
 @using ProjectManagement.Shared.Extensions
 @model ProjectManagementMVC.ViewModels.ProjectEditVM
 
-
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Create a Project";
 }
-<link rel="stylesheet" href="~/css/Lists.css">
 
-<body>
-
-<h2>Create a project</h2>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
-        <hr />
-        @Html.ValidationSummary(true)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name)
-                @Html.ValidationMessageFor(model => model.Name)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.StartDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.StartDate)
-                @Html.ValidationMessageFor(model => model.StartDate)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description)
-                @Html.ValidationMessageFor(model => model.Description)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.EndDate, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EndDate)
-                @Html.ValidationMessageFor(model => model.EndDate)
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.IsCompleted, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.IsCompleted)
-                @Html.ValidationMessageFor(model => model.IsCompleted)
-            </div>
-        </div>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/Lists.css">
+    <link rel="stylesheet" href="~/css/ProjectCss/CreateProject.css">
+</head>
 
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+<body class="bg-light">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h2>Create a Project</h2>
+                    </div>
+                    <div class="card-body">
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StartDate, new { @class = "control-label" })
+                                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EndDate, new { @class = "control-label" })
+                                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.IsCompleted, new { @class = "control-label" })
+                                @Html.EditorFor(model => model.IsCompleted, new { htmlAttributes = new { @class = "form-check-input" } })
+                                @Html.ValidationMessageFor(model => model.IsCompleted, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-success">Create</button>
+                                <a href="@Url.Action("List")" class="btn btn-secondary">Back to List</a>
+                            </div>
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-}
-<div>
-    @Html.ActionLink("Back to List", "List")
-</div>
 </body>
