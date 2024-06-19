@@ -34,7 +34,6 @@
     <ProjectReference Include="..\ProjectManagament.Services\ProjectManagament.Services.csproj" />
     <ProjectReference Include="..\ProjectManagement.Data\ProjectManagement.Data.csproj" />
     <ProjectReference Include="..\ProjectManagement.Shared\ProjectManagement.Shared.csproj" />
-    <ProjectReference Include="..\ProjectManagementMVC\ProjectManagementMVC.csproj" />
   </ItemGroup>
 
 </Project>
