@@ -1,0 +1,11 @@
+﻿.action-links {
+    white-space: nowrap; 
+}
+
+    .action-links a {
+        margin-right: 5px; 
+    }
+
+        .action-links a:last-child {
+            margin-right: 0; 
+        }

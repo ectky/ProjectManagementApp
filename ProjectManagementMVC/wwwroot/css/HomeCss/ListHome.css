@@ -1,0 +1,32 @@
+﻿.action-links {
+    white-space: nowrap; 
+}
+
+    .action-links a {
+        margin-right: 5px; 
+    }
+
+        .action-links a:last-child {
+            margin-right: 0; 
+        }
+
+
+body {
+    background: linear-gradient(90deg,rgba(2,0,36,1) 0%, rgba(75,14,154,1) 35%, rgba(0,212,255,1) 100%);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+p{
+    color:white
+
+}
+h1 {
+    color:white
+}
+h2 {
+    color: white
+}
+
+th {
+    color: white
+}

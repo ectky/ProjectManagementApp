@@ -13,9 +13,10 @@
 <body>
     <div class="container">
         <h2>Roles</h2>
-        <p>
+        @if (!User.IsInRole("Employee"))
+        {
             @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
-        </p>
+        }
         <table class="table">
             <thead>
                 <tr>

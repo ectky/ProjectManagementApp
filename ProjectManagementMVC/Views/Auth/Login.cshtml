@@ -1,36 +1,56 @@
-﻿@model ProjectManagementMVC.ViewModels.LoginVM
-
-@{
-    ViewData["Title"] = "Log in";
-}
+﻿@using ProjectManagementMVC.Controllers
+@using ProjectManagement.Shared.Extensions
+@model ProjectManagementMVC.ViewModels.LoginVM
 
 <head>
-    <link rel="stylesheet" href="~/css/Lists.css"> 
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="~/css/Login.css" />
+
 </head>
+@{
+    ViewBag.Title = "Login";
+}
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="container-fluid">
+            <form class="mx-auto">
+                <h4 class="text-center">Login</h4>
+                <div class="mb-3">
+                    <div class="form-label">
+                        @Html.LabelFor(model => model.Username, new { @class = "control-label col-md-2 " })
+                    </div>
 
-<h1 class="text-center">@ViewData["Title"]</h1>
+                    @Html.EditorFor(model => model.Username)
+                    @Html.ValidationMessageFor(model => model.Username)
 
-<div class="row">
-    <div class="col-md-4 offset-md-4">
-        <section>
-            <form id="account" method="post">
-                @Html.AntiForgeryToken()
-                <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="text-center mb-3">
-                    <label asp-for="Username" class="form-label"></label>
-                    <input asp-for="Username" class="form-control" autocomplete="username" aria-required="true" />
-                    <span asp-validation-for="Username" class="text-danger"></span>
+
                 </div>
-                <div class="text-center mb-3">
-                    <label asp-for="Password" class="form-label"></label>
-                    <input asp-for="Password" type="password" class="form-control" autocomplete="current-password" aria-required="true" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
+                <div class="mb-3">
+                    <div class="form-label">
+                        @Html.LabelFor(model => model.Password, new { @class = "control-label col-md-2 " })
+                    </div>
+
+                    @Html.EditorFor(model => model.Password)
+                    @Html.ValidationMessageFor(model => model.Password)
+
+
                 </div>
-                <div class="text-center">
-                    <button id="login-submit" type="submit" class="btn btn-primary">Log in</button>
-                </div>
+
+                <button type="submit" class="btn btn-primary mt-4">Login</button>
             </form>
-        </section>
-    </div>
-</div>
+        </div>
+    }
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+</body>

@@ -32,7 +32,10 @@
         </dl>
 
         <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+                @if (!User.IsInRole("Employee"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+                }
             <a href="@Url.Action("List")" class="btn btn-secondary">Back to List</a>
         </p>
     </div>

@@ -1,11 +1,12 @@
 ﻿.container {
     max-width: 600px;
-    margin-top: 50px;
+    margin-top: 15px;
 }
 
 .form-control {
     border-radius: 0;
 }
+
 .btn-save {
     background-color: #007bff;
     border-color: #007bff;
