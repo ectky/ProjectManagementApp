@@ -69,7 +69,10 @@
 
         <div class="mt-4">
             <p>
-                @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+                @if (!User.IsInRole("Employee"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
+                }
                 @Html.ActionLink("Back to List", "List", new { }, new { @class = "btn btn-secondary ml-2" })
             </p>
         </div>

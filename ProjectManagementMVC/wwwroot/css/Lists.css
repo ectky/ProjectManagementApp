@@ -1,6 +1,6 @@
 ﻿body {
     background-color: #f0f0f0;
-    color: #333;
+    color: white;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 0; 
     padding: 20px;
@@ -13,3 +13,10 @@ h2 {
 
 
 
+.text{
+    color:white
+}
+
+a{
+    color:white
+}
