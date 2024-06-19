@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagement.Data", ".
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagement.Shared", "..\ProjectManagement.Shared\ProjectManagement.Shared.csproj", "{7A412E41-BCA0-4CFF-922B-62FDC236B1C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagament.Services", "..\ProjectManagament.Services\ProjectManagament.Services.csproj", "{A7D90187-4EF0-4D5C-BD24-0E45014DC32C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjectManagament.Services", "..\ProjectManagament.Services\ProjectManagament.Services.csproj", "{A7D90187-4EF0-4D5C-BD24-0E45014DC32C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectManagement.Tests", "..\ProjectManagement.Tests\ProjectManagement.Tests.csproj", "{F2A22E5F-BA56-4DFF-9C75-FF3C985F1814}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A7D90187-4EF0-4D5C-BD24-0E45014DC32C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7D90187-4EF0-4D5C-BD24-0E45014DC32C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7D90187-4EF0-4D5C-BD24-0E45014DC32C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2A22E5F-BA56-4DFF-9C75-FF3C985F1814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2A22E5F-BA56-4DFF-9C75-FF3C985F1814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2A22E5F-BA56-4DFF-9C75-FF3C985F1814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2A22E5F-BA56-4DFF-9C75-FF3C985F1814}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
