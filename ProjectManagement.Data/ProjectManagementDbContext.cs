@@ -17,6 +17,8 @@ namespace ProjectManagement.Data
         public DbSet<Task> Tasks { get; set; }
         public DbSet<User> Users { get; set; }
 
+        public ProjectManagementDbContext() { }
+
         public ProjectManagementDbContext(DbContextOptions<ProjectManagementDbContext> options) : base(options)
         {
 
