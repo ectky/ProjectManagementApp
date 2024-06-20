@@ -6,15 +6,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/css/Lists.css">
     <link rel="stylesheet" href="~/css/UserCss/ListUser.css">
+    <link rel="stylesheet" href="~/css/Background.css">
+
 </head>
 <body>
     <div class="container">
-        <h2>Users</h2>
+        <h2 class="text-light">Users</h2>
         <p>
             @Html.ActionLink("Create New", "Create")
         </p>
-        <table class="table">
-            <thead>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
                 <tr>
                     <th>
                         @Html.DisplayNameFor(model => model.Username)
@@ -39,7 +41,7 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr>
+                    <tr class="text-light">
                         <td>
                             @Html.DisplayFor(modelItem => item.Username)
                         </td>
@@ -60,7 +62,7 @@
                         <td class="action-links">
                             @if (!User.IsInRole("Employee"))
                             {
-                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-primary" })
+                                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-sm btn-secondary" })
                                 @Html.Raw("| ")
                                 @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-sm btn-danger" })
                                 @Html.Raw("|")

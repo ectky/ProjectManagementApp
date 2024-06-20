@@ -1,16 +1,10 @@
 ﻿body {
-    background-color: #f0f0f0;
+    background-color: white;
     color: white;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    margin: 0; 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 0;
     padding: 20px;
-    
 }
-
-h2 {
-    color:black
-}
-
 
 
 .text{
