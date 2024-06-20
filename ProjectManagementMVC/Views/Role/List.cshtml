@@ -16,7 +16,12 @@
         <h2 class="text-light">Roles</h2>
         @if (!User.IsInRole("Employee"))
         {
-            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+
+            <div class="col-md-auto">
+                <a href="@Url.Action("Create")" class="btn btn-outline-primary btn-sm">
+                    Create
+                </a>
+            </div>
         }
         <table class="table table-bordered table-hover">
             <thead class="thead-dark">

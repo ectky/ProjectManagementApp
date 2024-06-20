@@ -12,7 +12,11 @@
     <div class="container mt-5">
         <h2 class="text-light">Reports</h2>
         <p>
-            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+            <div class="col-md-auto">
+                <a href="@Url.Action("Create")" class="btn btn-outline-primary btn-sm">
+                    Create
+                </a>
+            </div>
         </p>
         <table class="table table-striped">
             <thead class="thead-dark">

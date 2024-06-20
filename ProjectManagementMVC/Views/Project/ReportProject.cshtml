@@ -45,14 +45,12 @@
                 <div class="form-group row">
                     <div class="offset-md-2 col-md-10">
                         <button type="submit" class="btn btn-primary">Report Project</button>
+
+                            <a href="@Url.Action("List")" class="btn btn-secondary">Back to List</a>
                     </div>
                 </div>
             </div>
         </div>
     }
-
-    <div class="mt-3">
-        @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-secondary" })
-    </div>
 </div>
 </body>

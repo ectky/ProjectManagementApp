@@ -37,7 +37,8 @@
             </div>
 
             <div class="form-actions">
-                @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-back" })
+
+                <a href="@Url.Action("List")" class="btn btn-secondary">Back to List</a>
             </div>
         }
     </div>

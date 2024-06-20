@@ -74,7 +74,8 @@
                 {
                     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary" })
                 }
-                @Html.ActionLink("Back to List", "List", new { }, new { @class = "btn btn-secondary ml-2" })
+
+                <a href="@Url.Action("List")" class="btn btn-secondary">Back to List</a>
             </p>
         </div>
     </div>

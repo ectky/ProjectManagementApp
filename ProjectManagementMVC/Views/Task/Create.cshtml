@@ -75,14 +75,12 @@
                     <div class="form-group row">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="submit" class="btn btn-create">Create</button>
+                            @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-back" })
                         </div>
                     </div>
                 </div>
             </div>
         }
 
-        <div class="back-to-list">
-            @Html.ActionLink("Back to List", "List", null, new { @class = "btn btn-secondary" })
-        </div>
     </div>
 </body>
