@@ -22,7 +22,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-group row">
-            @Html.LabelFor(model => model.ProjectId, htmlAttributes: new { @class = "col-md-2 col-form-label" })
+            @Html.LabelFor(model => model.ProjectId, htmlAttributes: new { @class = "col-md-2 col-form-label text-light" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.ProjectId, Model.ProjectList, "Choose a Project...",
                     new { @class = "form-control" })

@@ -27,7 +27,7 @@
             <h3 class="text-center mb-4">Please choose a project to mark it as completed</h3>
 
             <div class="form-group row">
-                @Html.LabelFor(model => model.ProjectId, new { @class = "col-md-2 col-form-label text-md-right" })
+                @Html.LabelFor(model => model.ProjectId, new { @class = "col-md-2 col-form-label text-md-right text-light" })
                 <div class="col-md-10">
                     @Html.DropDownListFor(model => model.ProjectId, Model.ProjectList, "Choose a Project...",
                         new { @class = "form-control" })

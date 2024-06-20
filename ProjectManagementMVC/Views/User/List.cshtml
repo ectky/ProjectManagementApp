@@ -13,7 +13,11 @@
     <div class="container">
         <h2 class="text-light">Users</h2>
         <p>
-            @Html.ActionLink("Create New", "Create")
+            <div class="col-md-auto">
+                <a href="@Url.Action("Create")" class="btn btn-outline-primary btn-sm">
+                    Create
+                </a>
+            </div>
         </p>
         <table class="table table-bordered table-hover">
             <thead class="thead-dark">

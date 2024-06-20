@@ -5,12 +5,32 @@
     margin: 0;
     padding: 20px;
 }
-
-
-.text{
-    color:white
+.control-label col-md-2 {
+    color: white !important
 }
 
-a{
+.text {
+    color: white
+}
+.btn btn-secondary bt-li{
+    color:white
+}
+a {
+    color: black
+}
+.col-form-label{
+    color:black
+}
+.form-actions .btn btn-back {
+    color: black !important
+}
+.control-label {
+    color: black
+}
+.btn btn-primary text-light{
+    color:white !important
+}
+
+.but{
     color:white
 }
